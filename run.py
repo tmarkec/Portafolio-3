@@ -12,16 +12,17 @@ def welcome():
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    # ascii_banner = pyfiglet.figlet_format("Welcome   to   HANGMAN!!!")
-    # print(ascii_banner)
-    # print("\n")
-    # print("You play the game by guessing letters")
-    # print("that makes hidden word. With each wrong")
-    # print("guess you are one step closer to beeing")
-    # print("hanged! You can choose between 3 levels")
-    # print("but for start lets get your name first....")
-    # print("\n")
+    ascii_banner = pyfiglet.figlet_format("Welcome to HANGMAN!")
+    print(ascii_banner)
+    print("\n")
+    print("You play this game by guessing theletters")
+    print("one by one that makes the hidden word.")
+    print("With each wrong guess you are one step closer")
+    print("to beeing hanged! You can choose between three")
+    print("levels of difficulty, but lets get you name first...")
+    print("\n")
 
+    global name
     while True:
         name = input("Please enter your name:\n").strip().capitalize()
 
@@ -30,7 +31,6 @@ def welcome():
             
         else:
             clear()
-            # levels()
             break
     return name
 
@@ -56,11 +56,14 @@ def levels():
     This function will ask player to choose dificult level for the game.
     """
     clear()
-    name = welcome()
-    print(f'{name} Hello lets pick level for you!!!')
+    ascii_title = pyfiglet.figlet_format("HANGMAN!!!")
+    print(ascii_title)
+    print('\n')
+    print(f'What a lovely name {name}, lets pick level for you!!!')
+    print('\n')
     while True:
         try:
-            difficulty = input('Please type E for easy, M for medium or H for hard!').strip().upper()
+            difficulty = input('Please type E for easy, M for medium or H for hard!\n').strip().upper()
             if difficulty == 'E':
                 lives = 6
                 break
@@ -71,7 +74,7 @@ def levels():
                 lives = 2
                 break
             else:
-                raise ValueError('Please type E or M or H for difficulty level!\n')
+                raise ValueError(f'Please {name} type E or M or H for difficulty level!\n')
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
         
@@ -86,7 +89,7 @@ def game():
     tries = levels()
 
     while len(hidden_word) > 0 and tries > 0:
-        print(' you have {tries} left for this round')
+        print(f'{name} you have {tries} lives mleft for this round')
         print('You used:', ' '.join(used_letters))
         letter_words = [letter if letter in used_letters else '-' for letter in word]
 
@@ -114,14 +117,14 @@ def game():
     if tries == 0:
         clear()
         custom_fig = Figlet(font='graffiti')
-        print(custom_fig.renderText('Sorry you lost!!!'))
+        print(custom_fig.renderText(f'Sorry {name} you lost!!!'))
         print(f'The word we were looking for was {word}')
         print(hangman_as[tries])
         end()
 
     else:
         clear()
-        print('Well done, you won!!!')
+        print(f'Well done {name}, you won!!!')
         end()
 
 
@@ -133,7 +136,7 @@ def end():
         try:
             if again == 'Y':
                 clear()
-                welcome()
+                game()
                 break
             elif again == "N":
                 clear()
@@ -164,15 +167,3 @@ def thank_you():
 
 welcome()
 game()
-
-
-# def hangman():
-#     """
-#     Functions to call other functions
-#     """
-
-#     welcome()
-#     game(word_list, lives)
-
-
-# hangman()
