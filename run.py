@@ -4,6 +4,7 @@ import os
 import pyfiglet
 from pyfiglet import Figlet
 from hangman import hangman_as
+from words import word_list
 
 
 def welcome():
@@ -76,9 +77,9 @@ def levels():
         else:
             print('Please type E, M or H to choose dificulty levels!!!')
             choose = False
-    
 
-def game(word_list, name, lives):
+
+def game(word_list, lives):
     word = get_word(word_list)
     hidden_word = set(word)
     letter_alphab = set(string.ascii_uppercase)
@@ -89,8 +90,36 @@ def game(word_list, name, lives):
         print(f'You have left{tries} lives')
         print('You used:', ' '.join(used_letters))
         letter_words = [letter if letter in used_letters else '-' for letter in word]
+
         print(hangman_as[tries])
         print('Current word is:', ' '.join(letter_words))
-        
 
-welcome()
+        user_guess = input('Try to guess letter: \n').upper()
+
+        if user_guess in letter_alphab - used_letters:
+            used_letters.add(user_guess)
+            if user_guess in hidden_word:
+                hidden_word.remove(user_guess)
+            else:
+                tries -= 1
+                print('Your guess is not in the work, try again!')
+        elif user_guess in used_letters and len(user_guess) != 1:
+            print('You used this letter already, try again')
+        else:
+            print('Unrecognized character, please try again with letter!')
+    if tries == 0:
+        print('You lost game')
+    else:
+        print('You won')
+
+
+def hangman():
+    """
+    Functions to call other functions
+    """
+
+    welcome()
+    game(word_list, lives)
+
+
+hangman()
