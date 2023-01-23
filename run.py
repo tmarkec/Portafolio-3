@@ -57,34 +57,32 @@ def levels():
     """
     clear()
     print('Hello lets pick level for you!!!')
-    choose = False
-    lives = 0
-    while choose is False:
-        difficulty = input('Enter E for easy, M for medium or H for hard\n')\
-            .upper()
-        if difficulty == 'E':
-            choose = True
-            lives = 6
-            return lives
-        elif difficulty == 'M':
-            choose = True
-            lives = 4
-            return lives
-        elif difficulty == 'H':
-            choose = True
-            lives = 2
-            return lives
-        else:
-            print('Please type E, M or H to choose dificulty levels!!!')
-            choose = False
+    while True:
+        try:
+            difficulty = input('Please type E for easy, M for medium or H for hard!').upper()
+            if difficulty == 'E':
+                lives = 6
+                break
+            if difficulty == 'M':
+                lives = 4
+                break
+            if difficulty == 'H':
+                lives = 2
+                break
+            else:
+                raise ValueError('Please type E or M or H for difficulty level!')
+        except ValueError as e_rr:
+            print(f"Invalid input:{e_rr}")
+        
+    return lives
 
 
-def game(word_list, lives):
+def game():
     word = get_word(word_list)
     hidden_word = set(word)
     letter_alphab = set(string.ascii_uppercase)
     used_letters = set()
-    tries = lives
+    tries = levels()
     
     while len(hidden_word) > 0 and tries > 0:
         print(f'You have left{tries} lives')
@@ -97,29 +95,43 @@ def game(word_list, lives):
         user_guess = input('Try to guess letter: \n').upper()
 
         if user_guess in letter_alphab - used_letters:
+            clear()
             used_letters.add(user_guess)
             if user_guess in hidden_word:
+                clear()
                 hidden_word.remove(user_guess)
             else:
+                clear()
                 tries -= 1
                 print('Your guess is not in the work, try again!')
         elif user_guess in used_letters and len(user_guess) != 1:
+            clear()
             print('You used this letter already, try again')
         else:
+            clear()
             print('Unrecognized character, please try again with letter!')
     if tries == 0:
-        print('You lost game')
+        clear()
+        custom_fig = Figlet(font='graffiti')
+        print(custom_fig.renderText('Sorry you lost!!!'))
+        print(f'The word we were looking for was {word}')
+        print(hangman_as[tries])
     else:
-        print('You won')
+        clear()
+        print(custom_fig.renderText('Well done, you won!!!'))
+        print(f'The word we were looking for was {word}')
+
+welcome()
+game()
 
 
-def hangman():
-    """
-    Functions to call other functions
-    """
+# def hangman():
+#     """
+#     Functions to call other functions
+#     """
 
-    welcome()
-    game(word_list, lives)
+#     welcome()
+#     game(word_list, lives)
 
 
-hangman()
+# hangman()
