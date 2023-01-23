@@ -41,6 +41,11 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def get_word(word_list):
+    words = random.choice(word_list)
+    return words.upper()
+
+
 def levels():
     """
     This function will ask player to choose dificult level for the game.
@@ -67,6 +72,8 @@ def levels():
         else:
             print('Please type E, M or H to choose dificulty levels!!!')
             choose = False
+    
+
 
 
 welcome()
