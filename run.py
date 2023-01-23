@@ -12,25 +12,25 @@ def welcome():
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    ascii_banner = pyfiglet.figlet_format("Welcome   to   HANGMAN!!!")
-    print(ascii_banner)
-    print("\n")
-    print("You play the game by guessing letters")
-    print("that makes hidden word. With each wrong")
-    print("guess you are one step closer to beeing")
-    print("hanged! You can choose between 3 levels")
-    print("but for start lets get your name first....")
-    print("\n")
+    # ascii_banner = pyfiglet.figlet_format("Welcome   to   HANGMAN!!!")
+    # print(ascii_banner)
+    # print("\n")
+    # print("You play the game by guessing letters")
+    # print("that makes hidden word. With each wrong")
+    # print("guess you are one step closer to beeing")
+    # print("hanged! You can choose between 3 levels")
+    # print("but for start lets get your name first....")
+    # print("\n")
 
     while True:
-        name = input("Please enter your name:\n").capitalize()
+        name = input("Please enter your name:\n").strip().capitalize()
 
         if not name.isalpha():
             print("Name must be alphabets only!!!\n")
             
         else:
             clear()
-            levels()
+            # levels()
             break
     return name
 
@@ -56,10 +56,11 @@ def levels():
     This function will ask player to choose dificult level for the game.
     """
     clear()
-    print('Hello lets pick level for you!!!')
+    name = welcome()
+    print(f'{name} Hello lets pick level for you!!!')
     while True:
         try:
-            difficulty = input('Please type E for easy, M for medium or H for hard!').upper()
+            difficulty = input('Please type E for easy, M for medium or H for hard!').strip().upper()
             if difficulty == 'E':
                 lives = 6
                 break
@@ -70,7 +71,7 @@ def levels():
                 lives = 2
                 break
             else:
-                raise ValueError('Please type E or M or H for difficulty level!')
+                raise ValueError('Please type E or M or H for difficulty level!\n')
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
         
@@ -83,9 +84,9 @@ def game():
     letter_alphab = set(string.ascii_uppercase)
     used_letters = set()
     tries = levels()
-    
+
     while len(hidden_word) > 0 and tries > 0:
-        print(f'You have left{tries} lives')
+        print(' you have {tries} left for this round')
         print('You used:', ' '.join(used_letters))
         letter_words = [letter if letter in used_letters else '-' for letter in word]
 
@@ -116,10 +117,50 @@ def game():
         print(custom_fig.renderText('Sorry you lost!!!'))
         print(f'The word we were looking for was {word}')
         print(hangman_as[tries])
+        end()
+
     else:
         clear()
-        print(custom_fig.renderText('Well done, you won!!!'))
-        print(f'The word we were looking for was {word}')
+        print('Well done, you won!!!')
+        end()
+
+
+def end():
+    """ Function that will ask user if he wants to play again.
+    """
+    while True:
+        again = input('Would you like to play again? \n Y/N?\n').upper()
+        try:
+            if again == 'Y':
+                clear()
+                welcome()
+                break
+            elif again == "N":
+                clear()
+                thank_you()
+                break
+            else:
+                raise ValueError(f'You must type Y or N. You typed {again}')
+        except ValueError as e:
+            print(f'Try again: {e}')
+
+
+def thank_you():
+    clear()
+    print(
+        """
+         ,--.--------.  ,--.-,,-,--,   ,---.      .-._        ,--.-.,-.                         _,.---._                 
+        /==/,  -   , -\/==/  /|=|  | .--.'  \    /==/ \  .-._/==/- |\  \        ,--.-.  .-,--.,-.' , -  `.  .--.-. .-.-. 
+        \==\.-.  - ,-./|==|_ ||=|, | \==\-/\ \   |==|, \/ /, /==|_ `/_ /       /==/- / /=/_ //==/_,  ,  - \/==/ -|/=/  | 
+        `--`\==\- \   |==| ,|/=| _| /==/-|_\ |  |==|-  \|  ||==| ,   /        \==\, \/=/. /|==|   .=.     |==| ,||=| -| 
+            \==\_ \  |==|- `-' _ | \==\,   - \ |==| ,  | -||==|-  .|          \==\  \/ -/ |==|_ : ;=:  - |==|- | =/  | 
+            |==|- |  |==|  _     | /==/ -   ,| |==| -   _ ||==| _ , \          |==|  ,_/  |==| , '='     |==|,  \/ - | 
+            |==|, |  |==|   .-. ,\/==/-  /\ - \|==|  /\ , |/==/  '\  |         \==\-, /    \==\ -    ,_ /|==|-   ,   / 
+            /==/ -/  /==/, //=/  |\==\ _.\=\.-'/==/, | |- |\==\ /\=\.'         /==/._/      '.='. -   .' /==/ , _  .'  
+            `--`--`  `--`-' `-`--` `--`        `--`./  `--` `--`               `--`-`         `--`--''   `--`..---'   
+      """
+    )
+
 
 welcome()
 game()
