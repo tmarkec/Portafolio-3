@@ -15,11 +15,11 @@ def welcome():
     ascii_banner = pyfiglet.figlet_format("Welcome to HANGMAN!")
     print(ascii_banner)
     print("\n")
-    print("You play this game by guessing theletters")
-    print("one by one that makes the hidden word.")
-    print("With each wrong guess you are one step closer")
-    print("to beeing hanged! You can choose between three")
-    print("levels of difficulty, but lets get you name first...")
+    print("Rules of this game are fairly simple, you are")
+    print("guessing letters one by one that makes the hidden word.")
+    print("With each wrong guess you are one step closer to beeing")
+    print("hanged! You can choose different levels of difficulty!")
+    print("But let's not skip the steps now, first enter your name!")
     print("\n")
 
     global name
