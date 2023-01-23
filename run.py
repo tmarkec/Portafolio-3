@@ -42,6 +42,10 @@ def clear():
 
 
 def get_word(word_list):
+    """
+    Function to get random words
+    """
+
     words = random.choice(word_list)
     return words.upper()
 
@@ -74,6 +78,19 @@ def levels():
             choose = False
     
 
-
+def game(word_list, name, lives):
+    word = get_word(word_list)
+    hidden_word = set(word)
+    letter_alphab = set(string.ascii_uppercase)
+    used_letters = set()
+    tries = lives
+    
+    while len(hidden_word) > 0 and tries > 0:
+        print(f'You have left{tries} lives')
+        print('You used:', ' '.join(used_letters))
+        letter_words = [letter if letter in used_letters else '-' for letter in word]
+        print(hangman_as[tries])
+        print('Current word is:', ' '.join(letter_words))
+        
 
 welcome()
