@@ -61,7 +61,7 @@ def levels():
             print(Fore.CYAN + 'Please type M for medium'.center(width))
             print(Fore.MAGENTA + 'Please type H for hard'.center(width))
             print('Or type R for rules'.center(width))
-            difficulty = input('_'.center(width)).strip().upper()
+            difficulty = input(''.center(width)).strip().upper()
             if difficulty == 'E':
                 lives = 6
                 break
@@ -101,7 +101,6 @@ def rules():
     print(Fore.MAGENTA + "HARD" + "= 3 lives," + Fore.CYAN + "MEDIUM" + "="
                          "5 lives," + Fore.MAGENTA + "EASY" + "="
                          "7 lives".center(width))
-    print("\n")
     while True:
         pas_b = input("Type B to go back.".center(width)).upper()
 
@@ -129,11 +128,10 @@ def game():
     while len(hidden_word) > 0 and tries > 0:
         letter_words = \
             [letter if letter in used_letters else '-' for letter in word]
-
         print(hangman_as[tries])
         print(' '.join(letter_words).center(width))
-        print(f'{name} you have {tries} lives left for this round' + ' '
-              'You used:', ' '.join(used_letters))
+        print(f'{name} you have {tries} lives left for this round')
+        print('You used:', ' '.join(used_letters))
 
         user_guess = input('Try to guess letter:\n'.center(width)).upper()
         clear()
@@ -198,5 +196,6 @@ def thank_you():
     print(thank_text)
 
 
-welcome()
-game()
+if __name__ == '__main__':
+    welcome()
+    game()
