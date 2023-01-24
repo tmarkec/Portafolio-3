@@ -1,13 +1,13 @@
 import random
 import string
 import os
+import pyfiglet
 from pyfiglet import Figlet
 import colorama
 from hangman import hangman_as
 from words import word_list
 from colorama import Fore, init
 init(autoreset=True)
-
 
 
 def welcome():
