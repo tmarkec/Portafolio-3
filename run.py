@@ -126,8 +126,7 @@ def game():
 
     if tries == 0:
         clear()
-        custom_fig = pyfiglet.figlet_format(f'Sorry {name} you lost!!!')
-        print(custom_fig)
+        print(Fore.RED +(f'Sorry {name} you lost!!!'))
         print(f'The word we were looking for was {word}')
         print(hangman_as[tries])
         end()
