@@ -2,12 +2,11 @@ import random
 import string
 import os
 import pyfiglet
-from pyfiglet import Figlet
-import colorama
+# import colorama
 from hangman import hangman_as
 from words import word_list
-from colorama import Fore, init
-init(autoreset=True)
+# from colorama import Fore, init
+# init(autoreset=True)
 
 
 def welcome():
@@ -15,8 +14,8 @@ def welcome():
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    welcome_text = Figlet(font='sblood')
-    print(welcome_text.renderText('Welcome to Hangman'))
+    welcome_text = pyfiglet.figlet_format('Welcome to Hangman')
+    print(welcome_text)
     print("\n")
     print("Rules of this game are fairly simple, you are")
     print("guessing letters one by one that makes the hidden word.")
@@ -30,7 +29,7 @@ def welcome():
         name = input("Please enter your name:\n").strip().capitalize()
 
         if not name.isalpha():
-            print(Fore.RED + "Name must be alphabets only!!!\n")
+            print( "Name must be alphabets only!!!\n")
             
         else:
             clear()
@@ -64,7 +63,8 @@ def levels():
     print('\n')
     while True:
         try:
-            difficulty = input('Please type E for easy, M for medium or H for hard!\n').strip().upper()
+            difficulty = input('Please type E for easy, M for medium or H\
+                                 for hard!\n').strip().upper()
             if difficulty == 'E':
                 lives = 6
                 break
@@ -75,7 +75,8 @@ def levels():
                 lives = 2
                 break
             else:
-                raise ValueError(f'Please {name} type E or M or H for difficulty level!\n')
+                raise ValueError(f'Please {name} type E or M or H for \
+                                    difficulty level!\n')
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
 
@@ -101,7 +102,8 @@ def game():
     while len(hidden_word) > 0 and tries > 0:
         print(f'{name} you have {tries} lives left for this round')
         print('You used:', ' '.join(used_letters))
-        letter_words = [letter if letter in used_letters else '-' for letter in word]
+        letter_words = \
+            [letter if letter in used_letters else '-' for letter in word]
 
         print(hangman_as[tries])
         print('Current word is:', ' '.join(letter_words))
@@ -114,24 +116,27 @@ def game():
                 hidden_word.remove(user_guess)
             else:
                 tries -= 1
-                print(Fore.RED + 'Your guess is not in the word, try again!')
+                print('Your guess is not in the word, try again!')
+       
         elif user_guess in used_letters:
-             print(Fore.YELLOW + 'You used this letter already, try again')
+            print( 'You used this letter already, try again')
+        
         else:
-            print(Fore.RED + 'Unrecognized character, please try again with letter!')
+            print('Unrecognized character, please try \
+                                again with letter!')
 
     if tries == 0:
         clear()
-        custom_fig = Figlet(font='doom')
-        print(custom_fig.renderText(f'Sorry {name} you lost!!!'))
+        custom_fig = pyfiglet.figlet_format(f'Sorry {name} you lost!!!')
+        print(custom_fig)
         print(f'The word we were looking for was {word}')
         print(hangman_as[tries])
         end()
 
     else:
         clear()
-        text_win = Figlet(font='doom')
-        print(text_win.renderText(f'Well done {name}, you won!!!'))
+        text_win = pyfiglet.figlet_format(f'Well done {name}, you won!!!')
+        print(text_win)
         end()
     
 
@@ -152,7 +157,7 @@ def end():
                 thank_you()
                 break
             else:
-                raise ValueError(Fore.RED + '\nYou must type Y or N.')
+                raise ValueError('\nYou must type Y or N.')
         except ValueError as e:
             print(f'Try again: {e}')
 
@@ -163,8 +168,8 @@ def thank_you():
     when he decided to stop playing game
     """
     clear()
-    thank_text = Figlet(font='doom')
-    print(thank_text.renderText(f'Thank you for playing this game {name}!'))
+    thank_text = pyfiglet.figlet_format(f'Thank you for playing this game {name}!')
+    print(thank_text)
 
 
 welcome()
