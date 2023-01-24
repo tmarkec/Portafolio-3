@@ -1,12 +1,13 @@
 import random
 import string
 import os
-from colorama import Fore
-from colorama import init
 from pyfiglet import Figlet
+import colorama
 from hangman import hangman_as
 from words import word_list
+from colorama import Fore, init
 init(autoreset=True)
+
 
 
 def welcome():
@@ -118,7 +119,7 @@ def game():
              print(Fore.YELLOW + 'You used this letter already, try again')
         else:
             print(Fore.RED + 'Unrecognized character, please try again with letter!')
-            
+
     if tries == 0:
         clear()
         custom_fig = Figlet(font='doom')
