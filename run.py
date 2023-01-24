@@ -9,12 +9,12 @@ init(autoreset=True)
 width = os.get_terminal_size().columns
 
 
-def welcome():
+def welcome_screen():
     """
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    welcome_text = pyfiglet.figlet_format('Welcome to Hangman')
+    welcome_text = pyfiglet.figlet_format('Hangman')
     print(welcome_text)
     global name
     while True:
@@ -37,7 +37,7 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def get_word(word_list):
+def get_word():
     """
     Function to get random words
     """
@@ -52,7 +52,6 @@ def levels():
     Or he can choose to read rules of the game
     """
     clear()
-    print('\n')
     print(f'What a lovely name {name}, lets get started!!!'.center(width))
     print('\n')
     while True:
@@ -80,7 +79,8 @@ def levels():
                     Fore.RED + ('Please follow simple instuctions!!!'.center(
                         width)))
         except ValueError as e_rr:
-            print(f"Invalid input:{e_rr}")
+            print(f"Invalid input:{e_rr}".center(
+                        width))
     clear()
     return lives
 
@@ -94,13 +94,16 @@ def rules():
     welcome_text = pyfiglet.figlet_format('Hangman rules')
     print(welcome_text)
     print("\n")
-    print("Rules of this game are fairly simple, you are".center(width))
-    print("guessing letters one by one that makes hidden word.".center(width))
-    print("With each wrong guess you are one step closer to".center(width))
-    print("beeing hanged! You can choose different levels!".center(width))
-    print(Fore.MAGENTA + "HARD" + "= 3 lives," + Fore.CYAN + "MEDIUM" + "="
-                         "5 lives," + Fore.MAGENTA + "EASY" + "="
-                         "7 lives".center(width))
+    print("Rules of this game are fairly simple!!!".center(width))
+    print("1. You are guessing letters one by one that makes"
+          "hidden word.".center(width))
+    print("2. With each wrong guess you are losing a life".center(width))
+    print("3. How many lives you have depends on the level you chose".center(
+        width))
+    print("4. You win the game by guessing all the letter in word".center(
+        width))
+    print(Fore.LIGHTYELLOW_EX + "HARD= 3 lives, MEDIUM="
+                                "5 lives,EASY=7 live\n".center(width))
     while True:
         pas_b = input("Type B to go back.".center(width)).upper()
 
@@ -119,7 +122,7 @@ def game():
     loose all lives.
     """
     clear()
-    word = get_word(word_list)
+    word = get_word()
     hidden_word = set(word)
     letter_alphab = set(string.ascii_uppercase)
     used_letters = set()
@@ -154,17 +157,17 @@ def game():
         print(Fore.RED + (f'Sorry {name} you lost!!!').center(width))
         print(f'The word we were looking for was {word}'.center(width))
         print(hangman_as[tries])
-        end()
+        end_game()
 
     else:
         clear()
         text_win = pyfiglet.figlet_format(f'Well done {name}, you won!'.center(
             width))
         print(text_win)
-        end()
+        end_game()
 
 
-def end():
+def end_game():
     """
     Function that will ask user if he wants to play again.
     """
@@ -197,5 +200,5 @@ def thank_you():
 
 
 if __name__ == '__main__':
-    welcome()
+    welcome_screen()
     game()
