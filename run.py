@@ -2,11 +2,11 @@ import random
 import string
 import os
 import pyfiglet
-# import colorama
+import colorama
 from hangman import hangman_as
 from words import word_list
-# from colorama import Fore, init
-# init(autoreset=True)
+from colorama import Fore, init
+init(autoreset=True)
 
 
 def welcome():
@@ -27,9 +27,10 @@ def welcome():
 
     while True:
         name = input("Please enter your name:\n").strip().capitalize()
-
+        print('\n')
+        print('\n')
         if not name.isalpha():
-            print( "Name must be alphabets only!!!\n")
+            print(Fore.RED + "Name must be alphabets only!!!\n")
             
         else:
             clear()
@@ -63,8 +64,7 @@ def levels():
     print('\n')
     while True:
         try:
-            difficulty = input('Please type E for easy, M for medium or H\
-                                 for hard!\n').strip().upper()
+            difficulty = input('Please type E for easy, M for medium or H for hard!\n').strip().upper()
             if difficulty == 'E':
                 lives = 6
                 break
@@ -78,7 +78,7 @@ def levels():
                 raise ValueError(f'Please {name} type E or M or H for \
                                     difficulty level!\n')
         except ValueError as e_rr:
-            print(f"Invalid input:{e_rr}")
+            print(Fore.RED + (f"Invalid input:{e_rr}"))
 
     clear()  
     return lives
@@ -116,14 +116,13 @@ def game():
                 hidden_word.remove(user_guess)
             else:
                 tries -= 1
-                print('Your guess is not in the word, try again!')
+                print(Fore.RED + 'Your guess is not in the word, try again!')
        
         elif user_guess in used_letters:
-            print( 'You used this letter already, try again')
+            print(Fore.YELLOW + 'You used this letter already, try again')
         
         else:
-            print('Unrecognized character, please try \
-                                again with letter!')
+            print(Fore.RED + 'Unrecognized character, please try again with letter!')
 
     if tries == 0:
         clear()
@@ -158,8 +157,8 @@ def end():
                 break
             else:
                 raise ValueError('\nYou must type Y or N.')
-        except ValueError as e:
-            print(f'Try again: {e}')
+        except ValueError as e_rr:
+            print(Fore.RED + (f'Try again: {e_rr}'))
 
 
 def thank_you():
