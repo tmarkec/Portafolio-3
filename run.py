@@ -8,6 +8,8 @@ from words import word_list
 init(autoreset=True)
 width = os.get_terminal_size().columns
 
+global name
+
 
 def welcome_screen():
     """
@@ -46,6 +48,27 @@ def get_word():
     return words.upper()
 
 
+def check_rules():
+    """
+    This function will check if user wish to read rules or continue with game
+    """
+    clear()
+    welcome_text = pyfiglet.figlet_format('Hangman')
+    print(welcome_text)
+    print('\n')
+    print("Hi, if you wish to read rules press R if you wish to continue press C!!".center(width))
+    while True:
+        check = input('Press (R)ules or (C)ontinue'.center(width)).upper()
+        if check == 'R':
+            rules()
+            break
+        if check == 'C':
+            levels()
+            break
+        else:
+            print(Fore.RED + 'Please choose letters either R or C'.center(width))
+
+
 def rules():
     """
     This function will display rules to the user
@@ -66,13 +89,13 @@ def rules():
     print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
                                 "5 tries,EASY=7 tries\n".center(width))
     while True:
-        pas_b = input("Type B to go back.".center(width)).upper()
+        pas_b = input("Type P to play the game".center(width)).upper()
 
-        if pas_b == 'B':
-            game()
+        if pas_b == 'P':
+            levels()
             break
         else:
-            print('Please type letter B')
+            print('Please type letter P')
 
 
 def levels():
@@ -81,14 +104,13 @@ def levels():
     Or he can choose to read rules of the game
     """
     clear()
-    print(f'What a lovely name {name}, lets get started!!!'.center(width))
+    print(f'Hi {name}, lets get you started!!!'.center(width))
     print('\n')
     while True:
         try:
-            print(Fore.GREEN + 'Please type E for easy'.center(width))
-            print(Fore.CYAN + 'Please type M for medium'.center(width))
-            print(Fore.MAGENTA + 'Please type H for hard'.center(width))
-            print('Or type R for rules'.center(width))
+            print(Fore.GREEN + 'Please type E for easy\n'.center(width))
+            print(Fore.CYAN + 'Please type M for medium\n'.center(width))
+            print(Fore.MAGENTA + 'Please type H for hard\n'.center(width))
             difficulty = input(''.center(width)).strip().upper()
             if difficulty == 'E':
                 lives = 7
@@ -99,17 +121,12 @@ def levels():
             if difficulty == 'H':
                 lives = 3
                 break
-            if difficulty == "R":
-                rules()
-                break
             else:
                 clear()
                 raise ValueError(
-                    Fore.RED + ('Please follow simple instuctions!!!'.center(
-                        width)))
+                    Fore.RED + ('Please follow simple instuctions!!!'))
         except ValueError as e_rr:
-            print(f"Invalid input:{e_rr}".center(
-                        width))
+            print(f"Invalid input:{e_rr}")
     clear()
     return lives
 
@@ -151,7 +168,7 @@ def game():
                                 'try again'.center(width))
         else:
             print(Fore.RED + 'Unrecognized character'
-                             'try again with letter!'.center(width))
+                             ' try again with letter!'.center(width))
     if tries == 0:
         clear()
         print(Fore.RED + (f'Sorry {name} you lost!!!').center(width))
@@ -172,7 +189,7 @@ def end_game():
     Function that will ask user if he wants to play again.
     """
     while True:
-        print('Would you like to play again?\n')
+        print('Would you like to play again?\n'.center(width))
         again = input('Y/N?\n'.center(width)).upper()
         try:
             if again == 'Y':
@@ -194,11 +211,12 @@ def thank_you():
     This function will just print text for user
     when he decided to stop playing game
     """
-    clear()
+    # clear()
     thank_text = pyfiglet.figlet_format(f'Thank you for playing game {name}!')
     print(thank_text)
 
 
 if __name__ == '__main__':
     welcome_screen()
+    check_rules()
     game()
