@@ -91,13 +91,13 @@ def levels():
             print('Or type R for rules'.center(width))
             difficulty = input(''.center(width)).strip().upper()
             if difficulty == 'E':
-                lives = 6
+                lives = 7
                 break
             if difficulty == 'M':
-                lives = 4
+                lives = 5
                 break
             if difficulty == 'H':
-                lives = 2
+                lives = 3
                 break
             if difficulty == "R":
                 rules()
