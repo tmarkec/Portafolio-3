@@ -8,8 +8,6 @@ from words import word_list
 init(autoreset=True)
 width = os.get_terminal_size().columns
 
-global name
-
 
 def welcome_screen():
     """
@@ -20,9 +18,10 @@ def welcome_screen():
     print(welcome_text)
     global name
     while True:
+        print('\n')
+        print('\n')
         name = input("Please enter your name:\n".center(width)).strip()\
             .capitalize()
-        print('\n')
         print('\n')
         if not name.isalpha():
             print(Fore.RED + "Name must be alphabets only!!!\n".center(width))
@@ -56,9 +55,11 @@ def check_rules():
     welcome_text = pyfiglet.figlet_format('Hangman')
     print(welcome_text)
     print('\n')
-    print("Hi, if you wish to read rules press R if you wish to continue press C!!".center(width))
+    print("Hi, if you wish to read rules press R if"
+          " you wish to continue press C!!\n".center(width))
     while True:
-        check = input('Press (R)ules or (C)ontinue'.center(width)).upper()
+        check = input(Fore.YELLOW + 'Press (R)ules or (C)ontinue'.center(
+            width)).upper()
         if check == 'R':
             rules()
             break
@@ -66,7 +67,8 @@ def check_rules():
             levels()
             break
         else:
-            print(Fore.RED + 'Please choose letters either R or C'.center(width))
+            print(Fore.RED + 'Please choose letters either R or C'.center(
+                width))
 
 
 def rules():
@@ -110,7 +112,7 @@ def levels():
         try:
             print(Fore.GREEN + 'Please type E for easy\n'.center(width))
             print(Fore.CYAN + 'Please type M for medium\n'.center(width))
-            print(Fore.MAGENTA + 'Please type H for hard\n'.center(width))
+            print(Fore.YELLOW + 'Please type H for hard\n'.center(width))
             difficulty = input(''.center(width)).strip().upper()
             if difficulty == 'E':
                 lives = 7
