@@ -182,3 +182,123 @@ def thank_you():
 
 welcome()
 game()
+
+
+
+def levels():
+    """
+    This function will ask player to choose dificulty level for the game.
+    Or he can choose to read rules of the game
+    """
+    global lives
+    clear()
+    print(f'Hi {name}, lets get you started!!!'.center(width))
+    print("Rules of this game are fairly simple!!!".center(width))
+    print("1. You are guessing letters one by one that makes"
+          "hidden word.".center(width))
+    print("2. With each wrong guess you are losing a life".center(width))
+    print("3. How many lives you have depends on the level you chose".center(
+        width))
+    print("4. You win the game by guessing all the letter in word".center(
+        width))
+    print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
+                                "5 tries,EASY=7 tries\n".center(width))
+    print('\n')
+    while True:
+        try:
+            print(Fore.GREEN + 'Please type E for easy\n'.center(width))
+            print(Fore.CYAN + 'Please type M for medium\n'.center(width))
+            print(Fore.YELLOW + 'Please type H for hard\n'.center(width))
+            difficulty = input(''.center(width)).strip().upper()
+            if difficulty == 'E':
+                lives = 7
+                break
+            elif difficulty == 'M':
+                lives = 5
+                break
+            elif difficulty == 'H':
+                lives = 3
+                break
+            else:
+                clear()
+                raise ValueError(
+                    Fore.RED + ('Please follow simple instuctions!!!'))
+        except ValueError as e_rr:
+            print(f"Invalid input:{e_rr}")
+    clear()
+    return lives
+
+
+def game():
+    """
+    This function will run the game, sets lives and
+    template for player to play depends on the level he choose.
+    The game will finish when user either guess the word or
+    loose all lives.
+    """
+    clear()
+    word = get_word()
+    hidden_word = set(word)
+    letter_alphab = set(string.ascii_uppercase)
+    used_letters = set()
+    tries = lives
+
+    while len(hidden_word) > 0 and tries > 0:
+        letter_words = \
+            [letter if letter in used_letters else '-' for letter in word]
+        print(hangman_as[tries])
+        print(' '.join(letter_words).center(width))
+        print(f'{name} you have {tries} lives left for this round')
+        print('You used:', ' '.join(used_letters))
+
+        user_guess = input('Try to guess letter:\n'.center(width)).upper()
+        clear()
+        if user_guess in letter_alphab - used_letters:
+            used_letters.add(user_guess)
+            if user_guess in hidden_word:
+                hidden_word.remove(user_guess)
+            else:
+                tries -= 1
+                print(Fore.RED + 'Your guess is not in the word,'
+                                 'try again!'.center(width))
+        elif user_guess in used_letters:
+            print(Fore.YELLOW + 'You used this letter already,'
+                                'try again'.center(width))
+        else:
+            print(Fore.RED + 'Unrecognized character'
+                             ' try again with letter!'.center(width))
+    if tries == 0:
+        clear()
+        print(Fore.RED + (f'Sorry {name} you lost!!!').center(width))
+        print(f'The word we were looking for was {word}'.center(width))
+        print(hangman_as[tries])
+        end_game()
+
+    else:
+        clear()
+        text_win = pyfiglet.figlet_format(f'Well done {name}, you won!'.center(
+            width))
+        print(text_win)
+        end_game()
+
+
+def end_game():
+    """
+    Function that will ask user if he wants to play again.
+    """
+    while True:
+        print('Would you like to play again?\n'.center(width))
+        again = input('Y/N?\n'.center(width)).upper()
+        try:
+            if again == 'Y':
+                clear()
+                game()
+                break
+            elif again == "N":
+                clear()
+                thank_you()
+                break
+            else:
+                raise ValueError('\nYou must type Y or N.'.center(width))
+        except ValueError as e_rr:
+            print(Fore.RED + (f'Try again: {e_rr}'))

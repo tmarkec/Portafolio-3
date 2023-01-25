@@ -14,7 +14,7 @@ def welcome_screen():
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    welcome_text = pyfiglet.figlet_format('Hangman')
+    welcome_text = pyfiglet.figlet_format('*** Hangman ***')
     print(welcome_text)
     global name
     while True:
@@ -47,60 +47,14 @@ def get_word():
     return words.upper()
 
 
-# def rules():
-#     """
-#     This function will display rules to the user
-#     """
-#     clear()
-#     print("\n")
-#     print("Rules of this game are fairly simple!!!".center(width))
-#     print("1. You are guessing letters one by one that makes"
-#           "hidden word.".center(width))
-#     print("2. With each wrong guess you are losing a life".center(width))
-#     print("3. How many lives you have depends on the level you chose".center(
-#         width))
-#     print("4. You win the game by guessing all the letter in word".center(
-#         width))
-#     print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
-#                                 "5 tries,EASY=7 tries\n".center(width))
-    # while True:
-    #     pas_b = input("Type P to play the game".center(width)).upper()
-    #     if pas_b == 'P':
-    #         levels()
-    #         break
-    #     else:
-    #         print('Please type letter P')
-
-
-# def check_rules():
-#     """
-#     This function will check if user wish to read rules or continue with game
-#     """
-#     clear()
-#     welcome_text = pyfiglet.figlet_format('Hangman')
-#     print(welcome_text)
-#     print('\n')
-#     print("Hi, if you wish to read rules press R if"
-#           " you wish to continue press C!!\n".center(width))
-#     check = input('Press (R)ules or (C)ontinue'.center(
-#             width)).upper()
-#     if check == 'R':
-#         rules()
-#     elif check == 'C':
-#         levels()
-#     else:
-#         print(Fore.RED + 'Please choose letters either R or C'.center(
-#                 width))
-#     clear()
-
-
-def levels():
+def rules():
     """
-    This function will ask player to choose dificulty level for the game.
-    Or he can choose to read rules of the game
+    This function will display rules to the user
     """
     clear()
-    print(f'Hi {name}, lets get you started!!!'.center(width))
+    welcome_text = pyfiglet.figlet_format('**Hangman rules**')
+    print(welcome_text)
+    print("\n")
     print("Rules of this game are fairly simple!!!".center(width))
     print("1. You are guessing letters one by one that makes"
           "hidden word.".center(width))
@@ -111,6 +65,45 @@ def levels():
         width))
     print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
                                 "5 tries,EASY=7 tries\n".center(width))
+    while True:
+        pas_b = input("Type P to play the game".center(width)).upper()
+        if pas_b == 'P':
+            levels()
+            break
+        else:
+            print(Fore.RED + 'Wrong input!!!')
+
+
+def check_rules():
+    """
+    This function will check if user wish to read rules or continue with game
+    """
+    clear()
+    welcome_text = pyfiglet.figlet_format('Hangman')
+    print(welcome_text)
+    print('\n')
+    print(f"Hi{name},if you wish to read rules press R,".center(width))
+    print("if you wish to continue press C!!\n".center(width))
+    check = input('Press (R)ules or (C)ontinue'.center(
+            width)).upper()
+    if check == 'R':
+        rules()
+    elif check == 'C':
+        levels()
+    else:
+        print(Fore.RED + 'Please choose letters R or C!'.center(
+                width))
+    clear()
+
+
+def levels():
+    """
+    This function will ask player to choose dificulty level for the game.
+    Or he can choose to read rules of the game
+    """
+    global lives
+    clear()
+    print(f'Hi {name}, lets get you started!!!'.center(width))
     print('\n')
     while True:
         try:
@@ -149,7 +142,7 @@ def game():
     hidden_word = set(word)
     letter_alphab = set(string.ascii_uppercase)
     used_letters = set()
-    tries = levels()
+    tries = lives
 
     while len(hidden_word) > 0 and tries > 0:
         letter_words = \
@@ -217,11 +210,11 @@ def thank_you():
     This function will just print text for user
     when he decided to stop playing game
     """
-    # clear()
     thank_text = pyfiglet.figlet_format(f'Thank you for playing game {name}!')
     print(thank_text)
 
 
 if __name__ == '__main__':
     welcome_screen()
+    check_rules()
     game()
