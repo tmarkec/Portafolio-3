@@ -46,6 +46,35 @@ def get_word():
     return words.upper()
 
 
+def rules():
+    """
+    This function will display rules to the user
+    """
+
+    clear()
+    welcome_text = pyfiglet.figlet_format('Hangman rules')
+    print(welcome_text)
+    print("\n")
+    print("Rules of this game are fairly simple!!!".center(width))
+    print("1. You are guessing letters one by one that makes"
+          "hidden word.".center(width))
+    print("2. With each wrong guess you are losing a life".center(width))
+    print("3. How many lives you have depends on the level you chose".center(
+        width))
+    print("4. You win the game by guessing all the letter in word".center(
+        width))
+    print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
+                                "5 tries,EASY=7 tries\n".center(width))
+    while True:
+        pas_b = input("Type B to go back.".center(width)).upper()
+
+        if pas_b == 'B':
+            game()
+            break
+        else:
+            print('Please type letter B')
+
+
 def levels():
     """
     This function will ask player to choose dificulty level for the game.
@@ -83,35 +112,6 @@ def levels():
                         width))
     clear()
     return lives
-
-
-def rules():
-    """
-    This function will display rules to the user
-    """
-
-    clear()
-    welcome_text = pyfiglet.figlet_format('Hangman rules')
-    print(welcome_text)
-    print("\n")
-    print("Rules of this game are fairly simple!!!".center(width))
-    print("1. You are guessing letters one by one that makes"
-          "hidden word.".center(width))
-    print("2. With each wrong guess you are losing a life".center(width))
-    print("3. How many lives you have depends on the level you chose".center(
-        width))
-    print("4. You win the game by guessing all the letter in word".center(
-        width))
-    print(Fore.LIGHTYELLOW_EX + "HARD= 3 lives, MEDIUM="
-                                "5 lives,EASY=7 live\n".center(width))
-    while True:
-        pas_b = input("Type B to go back.".center(width)).upper()
-
-        if pas_b == 'B':
-            game()
-            break
-        else:
-            print('Please type letter B')
 
 
 def game():
