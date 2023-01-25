@@ -47,39 +47,60 @@ def get_word():
     return words.upper()
 
 
-def check_rules():
+# def rules():
+#     """
+#     This function will display rules to the user
+#     """
+#     clear()
+#     print("\n")
+#     print("Rules of this game are fairly simple!!!".center(width))
+#     print("1. You are guessing letters one by one that makes"
+#           "hidden word.".center(width))
+#     print("2. With each wrong guess you are losing a life".center(width))
+#     print("3. How many lives you have depends on the level you chose".center(
+#         width))
+#     print("4. You win the game by guessing all the letter in word".center(
+#         width))
+#     print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
+#                                 "5 tries,EASY=7 tries\n".center(width))
+    # while True:
+    #     pas_b = input("Type P to play the game".center(width)).upper()
+    #     if pas_b == 'P':
+    #         levels()
+    #         break
+    #     else:
+    #         print('Please type letter P')
+
+
+# def check_rules():
+#     """
+#     This function will check if user wish to read rules or continue with game
+#     """
+#     clear()
+#     welcome_text = pyfiglet.figlet_format('Hangman')
+#     print(welcome_text)
+#     print('\n')
+#     print("Hi, if you wish to read rules press R if"
+#           " you wish to continue press C!!\n".center(width))
+#     check = input('Press (R)ules or (C)ontinue'.center(
+#             width)).upper()
+#     if check == 'R':
+#         rules()
+#     elif check == 'C':
+#         levels()
+#     else:
+#         print(Fore.RED + 'Please choose letters either R or C'.center(
+#                 width))
+#     clear()
+
+
+def levels():
     """
-    This function will check if user wish to read rules or continue with game
+    This function will ask player to choose dificulty level for the game.
+    Or he can choose to read rules of the game
     """
     clear()
-    welcome_text = pyfiglet.figlet_format('Hangman')
-    print(welcome_text)
-    print('\n')
-    print("Hi, if you wish to read rules press R if"
-          " you wish to continue press C!!\n".center(width))
-    while True:
-        check = input(Fore.YELLOW + 'Press (R)ules or (C)ontinue'.center(
-            width)).upper()
-        if check == 'R':
-            rules()
-            break
-        if check == 'C':
-            levels()
-            break
-        else:
-            print(Fore.RED + 'Please choose letters either R or C'.center(
-                width))
-
-
-def rules():
-    """
-    This function will display rules to the user
-    """
-
-    clear()
-    welcome_text = pyfiglet.figlet_format('Hangman rules')
-    print(welcome_text)
-    print("\n")
+    print(f'Hi {name}, lets get you started!!!'.center(width))
     print("Rules of this game are fairly simple!!!".center(width))
     print("1. You are guessing letters one by one that makes"
           "hidden word.".center(width))
@@ -90,23 +111,6 @@ def rules():
         width))
     print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
                                 "5 tries,EASY=7 tries\n".center(width))
-    while True:
-        pas_b = input("Type P to play the game".center(width)).upper()
-
-        if pas_b == 'P':
-            levels()
-            break
-        else:
-            print('Please type letter P')
-
-
-def levels():
-    """
-    This function will ask player to choose dificulty level for the game.
-    Or he can choose to read rules of the game
-    """
-    clear()
-    print(f'Hi {name}, lets get you started!!!'.center(width))
     print('\n')
     while True:
         try:
@@ -117,10 +121,10 @@ def levels():
             if difficulty == 'E':
                 lives = 7
                 break
-            if difficulty == 'M':
+            elif difficulty == 'M':
                 lives = 5
                 break
-            if difficulty == 'H':
+            elif difficulty == 'H':
                 lives = 3
                 break
             else:
@@ -220,5 +224,4 @@ def thank_you():
 
 if __name__ == '__main__':
     welcome_screen()
-    check_rules()
     game()
