@@ -66,17 +66,22 @@ def rules():
     print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
                                 "5 tries,EASY=7 tries\n".center(width))
     while True:
-        pas_b = input("Type P to play the game".center(width)).upper()
-        if pas_b == 'P':
-            levels()
-            break
-        else:
-            print(Fore.RED + 'Wrong input!!!')
+        try:
+            pas_b = input("Type P to play the game".center(width)).upper()
+            if pas_b == 'P':
+                levels()
+                break
+            else:
+                clear()
+                raise ValueError(
+                    Fore.RED + ('Please type letter P!!!'))
+        except ValueError as e_rr:
+            print(f"Invalid input:{e_rr}")
 
 
 def check_rules():
     """
-    This function will check if user wish to read rules or continue with game
+    This function will check if user wish to read rules or continue with game!
     """
     clear()
     welcome_text = pyfiglet.figlet_format('Hangman')
@@ -84,22 +89,29 @@ def check_rules():
     print('\n')
     print(f"Hi{name},if you wish to read rules press R,".center(width))
     print("if you wish to continue press C!!\n".center(width))
-    check = input('Press (R)ules or (C)ontinue'.center(
-            width)).upper()
-    if check == 'R':
-        rules()
-    elif check == 'C':
-        levels()
-    else:
-        print(Fore.RED + 'Please choose letters R or C!'.center(
-                width))
+    while True:
+        try:
+            check = input('Press (R)ules or (C)ontinue'.center(
+                    width)).upper()
+            if check == 'R':
+                rules()
+                break
+            elif check == 'C':
+                levels()
+                break
+            else:
+                clear()
+                raise ValueError(
+                    Fore.RED + ('Please choose letters R or C!'))
+        except ValueError as e_rr:
+            print(f"Invalid input:{e_rr}")
     clear()
 
 
 def levels():
     """
     This function will ask player to choose dificulty level for the game.
-    Or he can choose to read rules of the game
+
     """
     global lives
     clear()
@@ -173,14 +185,11 @@ def game():
         print(Fore.RED + (f'Sorry {name} you lost!!!').center(width))
         print(f'The word we were looking for was {word}'.center(width))
         print(hangman_as[tries])
-        end_game()
 
     else:
         clear()
-        text_win = pyfiglet.figlet_format(f'Well done {name}, you won!'.center(
-            width))
+        text_win = pyfiglet.figlet_format(f'Well done {name}, you won!')
         print(text_win)
-        end_game()
 
 
 def end_game():
@@ -193,7 +202,7 @@ def end_game():
         try:
             if again == 'Y':
                 clear()
-                game()
+                levels()
                 break
             elif again == "N":
                 clear()
@@ -218,3 +227,4 @@ if __name__ == '__main__':
     welcome_screen()
     check_rules()
     game()
+    end_game()
