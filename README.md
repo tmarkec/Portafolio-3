@@ -156,6 +156,18 @@ Planning of this project was based on the flow charts using the platform Lucid C
 
 ### Bugs
 
+| **Bug**                                                                                                         | **Fix**                                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Couldn't connect function levels() to the game() function to upload difficulty level across game| Redo whole function levels() with changed while loop|
+| User name wasn't appearing across the game      | Created global variable called name                                                                                             |
+| After reading rules for the game and playing the game user was only able to play game twice before error message appeard, basically user was stuck in levels() function                                                   | Created new function to ask user if he wish to read rules or not and seprated rules() function from levels() function          |
+| Poor visual presentation of the game   | Introduced colorama and add spacing to the print statemants across the game       |
+| In levels() function user had to confirm his choice twice before he was able to continue with game                   | created global variable lives, which were later on called for user tries instead levels() function                                                                                                   |
+| After finishing game once user was only able to choose difficulty level before terminal was cut out                            | called game() function bellow levels() function in end_game() function                                                                                                    |
+| Inputs and screens were pilling up on top of each other, with user inputs and progress of the game                          | Imported os and created function which was used across the game to clear the terminal screen                                 |
+| Standard pop-up alert window!                                                                                   | Used outside library and code from "sweet alert"                                                                                                              |
+### Other testing
+
 ## Future features
 
 ## Deployment
