@@ -14,7 +14,7 @@ def welcome_screen():
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    welcome_text = pyfiglet.figlet_format('*** Hangman ***')
+    welcome_text = pyfiglet.figlet_format('** Hangman **')
     print(welcome_text)
     global name
     while True:
@@ -52,10 +52,10 @@ def rules():
     This function will display rules to the user
     """
     clear()
-    welcome_text = pyfiglet.figlet_format('**Hangman rules**')
+    welcome_text = pyfiglet.figlet_format('**Hangman**')
     print(welcome_text)
     print("\n")
-    print("Rules of this game are fairly simple!!!".center(width))
+    print("Rules of this game are fairly simple!!!\n".center(width))
     print("1. You are guessing letters one by one that makes"
           "hidden word.".center(width))
     print("2. With each wrong guess you are losing a life".center(width))
@@ -63,8 +63,8 @@ def rules():
         width))
     print("4. You win the game by guessing all the letter in word".center(
         width))
-    print(Fore.LIGHTYELLOW_EX + "HARD= 3 tries, MEDIUM="
-                                "5 tries,EASY=7 tries\n".center(width))
+    print(Fore.LIGHTYELLOW_EX + "HARD = 3 tries, MEDIUM ="
+                                "5 tries, EASY = 7 tries\n".center(width))
     while True:
         try:
             pas_b = input("Type P to play the game".center(width)).upper()
@@ -115,7 +115,7 @@ def levels():
     """
     global lives
     clear()
-    print(f'Hi {name}, lets get you started!!!'.center(width))
+    print(f'Hi {name}, now choose your level!'.center(width))
     print('\n')
     while True:
         try:
