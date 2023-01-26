@@ -185,11 +185,13 @@ def game():
         print(Fore.RED + (f'Sorry {name} you lost!!!').center(width))
         print(f'The word we were looking for was {word}'.center(width))
         print(hangman_as[tries])
+        end_game()
 
     else:
         clear()
         text_win = pyfiglet.figlet_format(f'Well done {name}, you won!')
         print(text_win)
+        end_game()
 
 
 def end_game():
@@ -203,6 +205,7 @@ def end_game():
             if again == 'Y':
                 clear()
                 levels()
+                game()
                 break
             elif again == "N":
                 clear()
@@ -227,4 +230,4 @@ if __name__ == '__main__':
     welcome_screen()
     check_rules()
     game()
-    end_game()
+    # end_game()
