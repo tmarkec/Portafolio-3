@@ -37,14 +37,15 @@ Hangman is a Python terminal game. The player's objective is to guess letters in
 - As a player, I want to be able to know the rules of the game
 - As a player, I want the be able to pick the level of difficulty for the game
 - As a player, I want the game to show my progress in the game either by winning or losing.
-- As a player, I want a warning message to appear on the screen if I accidentally enter an invalid character, or number or just repeat the letter I used already
+- As a player, I want a warning message to appear on the screen if I accidentally enter an invalid character, or number 
+  or just repeat the letter I used already
 - As a player, I want to get some message if I win, and if I lose I want to know what was the secret word
 - As a player, I want some help/hint if my attempts are not going well and I'm close to losing the game
 - As a player, after every game, I want to be able to have the option to play again or not
 
 ### Colors
 
-- Colored text will be shown across the game, to make users more interested in the game. Wrong inputs across the game will be shown in red color. Colors in the game are imported from Python Colorama Model
+- Colored text will be shown across the game to make users more interested and attracted. Wrong inputs across the game will be shown in red color. Colors in the game are imported from Python Colorama Model
 
 ### Technology Used
 
@@ -75,11 +76,11 @@ The planning of this project was based on the flow charts using the platform Luc
 
 ### Testing User Stories
 
- - As a player, I want to be able to create a user name for the game
+ - As a player, I want to be able to create a username for the game
 
 | **Feature**  | **Action**                  | **Expected Result**                                          | **Actual Result** |
 | ------------ | --------------------------- | ------------------------------------------------------------ | ----------------- |
-| Welcome screen | There is a user name input field below the "Hangman" title | Type your username and press enter, your name will appear in later stages of the game it| It works as expected |
+| Welcome screen | There is a user name input field below the "Hangman" title | Type your username and press enter, your name will appear in later stages of the game | It works as expected |
 
 <details><summary>Screenshots</summary>
 <img src="./readme-img/input-name.png">
@@ -89,7 +90,7 @@ The planning of this project was based on the flow charts using the platform Luc
 
 | **Feature** | **Action**                           | **Expected Result**                                           | **Actual Result** |
 | ----------- | ------------------------------------ | ------------------------------------------------------------- | ----------------- |
-| Hangman rules screen | On the second screen type "R" and press "Enter" that will lead you to a separate screen which will display the rules of the game | Game rules are shown on separate clear screen | It works as expected |
+| Hangman rules screen | On the second screen type "R" and press "Enter" that will lead you to a separate screen which will display the rules of the game | Game rules are shown on the separate clear screen | It works as expected |
 
 <details><summary>Screenshots</summary>
 <img src="./readme-img/alert-window.png">

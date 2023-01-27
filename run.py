@@ -2,7 +2,7 @@ import random
 import string
 import os
 import pyfiglet
-from colorama import Fore, init
+from colorama import Fore, init, Style
 from hangman import hangman_as
 from words import word_list
 init(autoreset=True)
@@ -19,10 +19,17 @@ def welcome_screen():
     global name
     while True:
         print('\n')
-        print('\n')
-        name = input("Please enter your name:\n".center(width)).strip()\
+        print("\n")
+        name = (
+            input(
+                Fore.MAGENTA
+                + Style.BRIGHT
+                + ("Please enter your name:\n".center(width))
+            )
+            .strip()
             .capitalize()
-        print('\n')
+        )
+        print("\n")
         if not name.isalpha():
             print(Fore.RED + "Name must be alphabets only!!!\n".center(width))
         else:
@@ -63,18 +70,20 @@ def rules():
         width))
     print("4. You win the game by guessing all the letter in word".center(
         width))
-    print(Fore.LIGHTYELLOW_EX + "HARD = 3 tries, MEDIUM ="
-                                "5 tries, EASY = 7 tries\n".center(width))
+    print(Fore.LIGHTYELLOW_EX + "HARD =3 tries, MEDIUM ="
+                                "5 tries, EASY =7 tries\n".center(width))
     while True:
         try:
-            pas_b = input("Type P to play the game".center(width)).upper()
-            if pas_b == 'P':
+            pas_b = input(
+                Fore.LIGHTWHITE_EX + ("Type P to"
+                                      " play the game".center(width))
+            ).upper()
+            if pas_b == "P":
                 levels()
                 break
             else:
                 clear()
-                raise ValueError(
-                    Fore.RED + ('Please type letter P!!!'))
+                raise ValueError(Fore.RED + ("Please type letter P!!!"))
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
 
@@ -84,11 +93,13 @@ def check_rules():
     This function will check if user wish to read rules or continue with game!
     """
     clear()
-    welcome_text = pyfiglet.figlet_format('Hangman')
+    welcome_text = pyfiglet.figlet_format('**Hangman**')
     print(welcome_text)
     print('\n')
-    print(f"Hi{name},if you wish to read rules press R,".center(width))
-    print("if you wish to continue press C!!\n".center(width))
+    print(f"{Fore.BLUE + Style.BRIGHT} What a lovely name {name}!\n".center(
+        width))
+    print("If you wish to read rules press R!!".center(width))
+    print("If you wish to continue press C!!\n".center(width))
     while True:
         try:
             check = input('Press (R)ules or (C)ontinue'.center(
@@ -115,7 +126,7 @@ def levels():
     """
     global lives
     clear()
-    print(f'Hi {name}, now choose your level!'.center(width))
+    print(f'{name}, now choose your level!'.center(width))
     print('\n')
     while True:
         try:
@@ -161,10 +172,15 @@ def game():
             [letter if letter in used_letters else '-' for letter in word]
         print(hangman_as[tries])
         print(' '.join(letter_words).center(width))
-        print(f'{name} you have {tries} lives left for this round')
+        print(
+            Fore.MAGENTA
+            + Style.BRIGHT
+            + (f"{name} you have {tries} lives left for this round")
+        )
         print('You used:', ' '.join(used_letters))
 
-        user_guess = input('Try to guess letter:\n'.center(width)).upper()
+        user_guess = input(Fore.LIGHTWHITE_EX + Style.BRIGHT + "Try"
+                           "to guess letter:\n".center(width)).upper()
         clear()
         if user_guess in letter_alphab - used_letters:
             used_letters.add(user_guess)
@@ -182,8 +198,9 @@ def game():
                              ' try again with letter!'.center(width))
     if tries == 0:
         clear()
-        print(Fore.RED + (f'Sorry {name} you lost!!!').center(width))
-        print(f'The word we were looking for was {word}'.center(width))
+        print(Fore.RED + (f'Sorry {name} you lost!!!\n').center(width))
+        print('The word we were looking for was:'.center(width))
+        print(f"{Fore.YELLOW + Style.BRIGHT} {word}".center(width))
         print(hangman_as[tries])
         end_game()
 
@@ -199,7 +216,8 @@ def end_game():
     Function that will ask user if he wants to play again.
     """
     while True:
-        print('Would you like to play again?\n'.center(width))
+        print(f"{Fore.RED + Style.BRIGHT} Would you like to play"
+              "again?\n".center(width))
         again = input('Y/N?\n'.center(width)).upper()
         try:
             if again == 'Y':
