@@ -1,6 +1,6 @@
 # **Hangman**
 
-Hangman is a Python terminal game. The player's objective is to guess letters in hidden words. In each round the player guesses a letter of the alphabet if it is present in the word all instances are revealed, otherwise one of the hangman's body parts is drawn in on the gibbet and the player loses their life. The game ends in a win if the word is entirely revealed by correct guesses, and ends in a loss if the hangman's body is completely revealed instead.
+Hangman is a Python terminal game. The player's objective is to guess letters in hidden words. In each round the player guesses a letter of the alphabet if it is present in the word all instances are revealed, otherwise one of the hangman's body parts is drawn in on the gibbet and the player loses their life. The game ends in a win if the word is entirely revealed by correct guesses, and ends in a loss if the hangman's body is completely revealed instead. User can also track his score, and at the end of the game compare it to the others.
 
 
   - [View the Live Website Here](https://hangers.herokuapp.com/)
@@ -40,7 +40,7 @@ Hangman is a Python terminal game. The player's objective is to guess letters in
 - As a player, I want a warning message to appear on the screen if I accidentally enter an invalid character, or number 
   or just repeat the letter I used already
 - As a player, I want to get some message if I win, and if I lose I want to know what was the secret word
-- As a player, I want some help/hint if my attempts are not going well and I'm close to losing the game
+- As a player, I want to be able to see my score/progress through the game and to have option to check other people scores
 - As a player, after every game, I want to be able to have the option to play again or not
 
 ### Colors
@@ -71,6 +71,24 @@ Hangman is a Python terminal game. The player's objective is to guess letters in
 ## Flow Chart
 
 The planning of this project was based on the flow charts using the platform Lucid Char
+
+## Features
+### Welcome screen
+- Welcomes a user to the game with the name input field
+### Second screen
+- Welcome a user with their name and give a user option to either read the rules or continue to the next step
+### Rules screen
+- Describes rules to the user and how to play the game
+### Levels screen
+- Gives a user option to pick the difficulty level that will reflect on the tries he gets through the game
+### Game screen
+- This is also a play screen on which a user is guessing letters from the hidden word. A user is displayed with multiple sections: current score, already tried letters, hidden word, hangman art in different stages depends on a user progress and with remaining lives/tries that a user has for this game
+### End game screen
+- A user is displayed with the completed hangman art(win or lose), his overall score and the option to play the game again, check scores, or exit the game
+### Score screen
+- A user is presented with a table that has 3 columns with name, score and current date that the game has been played, and scores are presented from best to worst
+### Thank you screen
+- A user is presented with ascci art thank you message
 
 ## Testing
 
@@ -149,11 +167,11 @@ The planning of this project was based on the flow charts using the platform Luc
 | End game screen  | After finishing the game message with options for the user will appear on the screen | By pressing "Y" to be directed to choose the level for another game, or by pressing "N" to be displayed thank you message | It works as expected |
 
 
--  As a user, I want to be able to either play again, or start new game with a new username
+-  As a player, I want to be able to see my score/progress through the game and to have option to check other people scores
 
 | **Feature** | **Action**                | **Expected Result**                                                  | **Actual Result** |
 | ----------- | ------------------------- | -------------------------------------------------------------------- | ----------------- |
-| Game page   | Click on either on "Go back" or "Play again" button | User should be taken to the "Landing page" so he can create new username, or new game should start for the user | It work as expected  |
+| Game page & Score page  | Play the game | User score is displayed on top of the screen, and once user finish his game he can simply check leaderboard | It work as expected  |
 
 <details><summary>Screenshots</summary>
 <img src="./readme-img/back.png">
@@ -206,7 +224,7 @@ The planning of this project was based on the flow charts using the platform Luc
    - Features that I would like to add to the game would be, different categories that users can pick to guess the secret word
    - Use API services to randomly get words rather than storing them in folders
    - The user to be able to use a hint if he gets stuck
-   - Add a score list to the screen with an option for the user to compare his score to the score of the other users 
+  
 ## Deployment
 ### Gitpod and git
  -  I created a repository in Github, named it Portafolio-3, and used the template Code-Institute-org/python-essentials-template
@@ -231,10 +249,11 @@ This project was deployed using Code Institutes mock terminal for Heroku.
   - I give credit to [Stack overflow](https://www.stackoverflow.com/), [MDN Web Docs](https://developer.mozilla.org/en-US/) & [W3 Schools](https://www.w3schools.com/) for helping me resolve issues with Python while coding through
   - Inspiration and guidance/problem solving through project came from [kite](https://www.youtube.com/@KiteHQ), [Sanjin Dedic](https://www.youtube.com/@SanjinDedic), [Tech with Tim](https://www.youtube.com/@TechWithTim) 
    youtube channels, and [Geeksforgeeks](https://www.geeksforgeeks.org/), [Codefather](https://codefather.tech/) websites
-  - Credits for code that clear screen was found on [stackoverflow](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
+  - Credits for code os.system('cls' if os.name == 'nt' else 'clear') that clear screen was found on [stackoverflow](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
   - Credits for my hangman art go to  [Ascii](https://ascii.co.uk/art/hangman)
   - To create banner for my page with title name I used [Patorjk](https://patorjk.com/)
   - Giving credit to [Lucid chart](ttps://www.lucidchart.com/) for providing tools to easily create my flow chart
+  - Credits for centering my content in the terminal with the code  os.get_terminal_size().columns goes to [Geeksforgeeks](https://www.geeksforgeeks.org/)
 
 - Acknowledgment
   - Special thank you goes to mentor Jubril Akolade who helped me to finish my project

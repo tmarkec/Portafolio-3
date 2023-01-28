@@ -249,11 +249,11 @@ def game():
                               \\  \\`_.' //
                                \\.-`--'.//
                                  Y .  .Y
-                                 | . .|
-                                 |    |
-                                 ||'||
-                                 || ||
-                             __/ | | \\__
+                                 | . . |
+                                 |     |
+                                 ||' '||
+                                 ||   ||
+                              __//     \\__
         """)
         print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
             width))
