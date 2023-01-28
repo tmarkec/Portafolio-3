@@ -266,7 +266,7 @@ def end_game():
     """
     while True:
         print(f"{Fore.GREEN + Style.BRIGHT} {name} you can deicide to play"
-              " again or not, or you can just check our scoreboard\n".center(
+              " again or not, or you can check scoreboard\n".center(
                 width))
         again = input('Press (Y)es, (N)o or (S)core:\n'.center(width)).upper()
         try:

@@ -177,9 +177,30 @@ The planning of this project was based on the flow charts using the platform Luc
 | After finishing thegame once user was only able to choose a difficulty level before the terminal was cut out                            | called game() function bellow levels() function in end_game() function                                                                                                    |
 | Print statements from different screens were pilling up on top of each other, with user inputs and progress of the game                          | Imported os and created function which was used across the game to clear the terminal screen                                 |
 | Too long lines during code                   | Run and formatted code through black.vercel.app                              |
+| Game worked locally but not on Heroku app                   |  Created new excell sheet with new credentials and repeated process of connecting APIs, googleshet, heroku                           |
                                                                                                          
- ### Other Testing
-  - I've tested across the game that the user can only input alphabet letters, no special characters, spaces or numbers were allowed. I've tested that for required letters to choose a level, play a game, read rules, etc. user will only move to the required stage for the game if he inputs the right letter which was described in the message.
+ ### Manual Testing
+  - Welcome screen
+    - I've tested that the input field for name takes only alphabet letters and nothing else and that error message is displayed to the user that warns the user of his input
+  - Decide to check the rules screen 
+    - I've tested that the user is allowed to enter only letters that are displayed on the screen and that the error message is shown to the user and that those options lead the user to the screen that he chose to go to
+  - Rules screen
+    - I've tested that user can only input the letter "P" which will take a user to the next screen, the wrong input is displayed to the user
+  - Level difficulty screen
+    - I've tested that the user can only input 3 letters/ options that are provided to him and if he inputs the wrong letter that error message is displayed to the user
+  - Game screen
+    - I've tested multiple inputs on this screen
+    - If a user repeats the letter that he already guessed error message will be displayed to the user
+    - If a user inputs the number or any other special character error message will be displayed to the user
+    - If a user inputs is wrong error message will notify the user 
+  - End game screen
+    - I've tested that the user is only allowed to input letters that are instructed on the screen and that with wrong input error message displays to user 
+  - Score screen
+    - I've tested that user is only allowed to press letter "B" to go back to previous screen and that error message is displayed to the user if he puts wrong input
+  - Hangman game
+    - I've tested that all instructions are displayed to the user and that all inputs that the user has to type will bring user to desired and expected outcome like it's displayed on the screens across the game
+    - I've tested that score on the game page is with the rules of the game and that the overall score is uploaded to the google sheet and that data is printed out on the final screen if a user wishes to check the leaderboard
+    - Also tested that data is presented to the user from top (best score) to the bottom
 
 ## Future Features
    - Features that I would like to add to the game would be, different categories that users can pick to guess the secret word
