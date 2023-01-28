@@ -1,30 +1,12 @@
 import random
 import string
 import os
-import datetime
-import gspread
 import pyfiglet
-from google.oauth2.service_account import Credentials
-from tabulate import tabulate
 from colorama import Fore, init, Style
 from hangman import hangman_as
 from words import word_list
 init(autoreset=True)
 width = os.get_terminal_size().columns
-
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
- 
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('test')
-
-leaders = SHEET.worksheet('user2')
-date = datetime.datetime.now().strftime("%d-%m-%Y")
 
 
 def welcome_screen():
@@ -184,7 +166,7 @@ def game():
     letter_alphab = set(string.ascii_uppercase)
     used_letters = set()
     tries = lives
-
+    points = 0
     while len(hidden_word) > 0 and tries > 0:
         letter_words = \
             [letter if letter in used_letters else '-' for letter in word]
@@ -204,8 +186,12 @@ def game():
             used_letters.add(user_guess)
             if user_guess in hidden_word:
                 hidden_word.remove(user_guess)
+                points += 1
+                print(f'you got {points}')
             else:
                 tries -= 1
+                points -= 1
+                print(f'you got {points}')
                 print(Fore.RED + 'Your guess is not in the word,'
                                  'try again!'.center(width))
         elif user_guess in used_letters:
@@ -224,6 +210,8 @@ def game():
 
     else:
         clear()
+        score = points + 10
+        print(score)
         text_win = pyfiglet.figlet_format(f'Well done {name}, you won!')
         print(text_win)
         end_game()
