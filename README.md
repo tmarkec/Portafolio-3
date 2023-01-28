@@ -216,7 +216,7 @@ This project was deployed using Code Institutes mock terminal for Heroku.
   - Giving credit to [Lucid chart](ttps://www.lucidchart.com/) for providing tools to easily create my flow chart
 
 - Acknowledgment
-  - Special thank you goes to mentor Narander Singh who helped me to finish my project
+  - Special thank you goes to mentor Jubril Akolade who helped me to finish my project
   - I would like to thank tutor support from Code Institue for their help, as well as the whole  Code Institue for giving me the opportunity to attend this course and to work on this project
   - I would also like to thank my colleagues for their support
   - Last but not least I would like to thank our coordinator Irene from Code Institute for giving guidance and schedules on daily basis in the classroom
