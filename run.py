@@ -98,7 +98,7 @@ def rules():
         try:
             pas_b = input(
                 Fore.LIGHTWHITE_EX + ("Type P to"
-                                      " play the game".center(width))
+                                      " play the game:\n".center(width))
             ).upper()
             if pas_b == "P":
                 levels()
@@ -124,7 +124,7 @@ def check_rules():
         width))
     while True:
         try:
-            check = input('Press (R)ules or (C)ontinue'.center(
+            check = input('Press (R)ules or (C)ontinue:\n'.center(
                     width)).upper()
             if check == 'R':
                 rules()
@@ -268,7 +268,7 @@ def end_game():
         print(f"{Fore.GREEN + Style.BRIGHT} {name} you can deicide to play"
               " again or not, or you can just check our scoreboard\n".center(
                 width))
-        again = input('Press (Y)es, (N)o or (S)core\n'.center(width)).upper()
+        again = input('Press (Y)es, (N)o or (S)core:\n'.center(width)).upper()
         try:
             if again == 'Y':
                 clear()
@@ -323,7 +323,7 @@ def leader_board():
               + "Hope you are happy with your score,"
                 " now lets get you back!".center(width))
         print("\n")
-        back = input("Press (B)ack!!".center(width)).upper()
+        back = input("Press (B)ack:\n".center(width)).upper()
         try:
             if back == 'B':
                 clear()
