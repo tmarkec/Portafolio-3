@@ -230,8 +230,25 @@ def game():
 
     else:
         clear()
-        text_win = pyfiglet.figlet_format(f'Well done {name}, you won!')
-        print(text_win)
+        score = points + 10
+        print(Fore.BLUE
+              + Style.BRIGHT + (f" Well done {name}, you won!").center(width))
+        print(
+            """
+                                   .-''.
+                                  /    \\
+                             ')  || '/' | (`
+                              \\  \\`_.' //
+                               \\.-`--'.//
+                                 Y .  .Y
+                                 | . .|
+                                 |    |
+                                 ||'||
+                                 || ||
+                             __/ | | \\__
+        """)
+        print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
+            width))
         end_game()
 
 
@@ -240,9 +257,10 @@ def end_game():
     Function that will ask user if he wants to play again.
     """
     while True:
-        print(f"{Fore.RED + Style.BRIGHT} Would you like to play"
-              "again?\n".center(width))
-        again = input('Y/N?\n'.center(width)).upper()
+        print(f"{Fore.GREEN + Style.BRIGHT} {name} you can play"
+              " again or not or you can just check our scoreboard\n".center(
+                width))
+        again = input('Press (Y)es, (N)o or (S)core\n'.center(width)).upper()
         try:
             if again == 'Y':
                 clear()
@@ -253,8 +271,12 @@ def end_game():
                 clear()
                 thank_you()
                 break
+            elif again == "S":
+                clear()
+                leader_board()
+                break
             else:
-                raise ValueError('\nYou must type Y or N.'.center(width))
+                raise ValueError('\nYou must type Y,N or S!!!'.center(width))
         except ValueError as e_rr:
             print(Fore.RED + (f'Try again: {e_rr}'))
 
@@ -278,7 +300,7 @@ def update_scoreboard():
 
 def leader_board():
     """
-    Function to display scores
+    Function to display scores on user request
     """
     clear()
     leaders.sort((2, 'des'))
