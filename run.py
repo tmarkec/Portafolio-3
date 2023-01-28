@@ -269,7 +269,6 @@ def end_game():
     """
     Function that will ask user if he wants to play again.
     """
-    clear()
     while True:
         print(f"{Fore.GREEN + Style.BRIGHT} {name} you can play again, check"
               " leaderboard or exit game.\n".center(
