@@ -213,21 +213,17 @@ def game():
             if user_guess in hidden_word:
                 hidden_word.remove(user_guess)
                 points += 1
-                # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
             else:
                 tries -= 1
                 points -= 1
                 print(Fore.RED + 'Your guess is not in the word,'
                                  'try again!'.center(width))
-                # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         elif user_guess in used_letters:
             print(Fore.YELLOW + 'You used this letter already,'
                                 'try again'.center(width))
-            # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         else:
             print(Fore.RED + 'Unrecognized character'
                              ' try again with letter!'.center(width))
-            # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
     if tries == 0:
         clear()
         print(Fore.RED + (f'Sorry {name} you lost!!!\n').center(width))
@@ -242,6 +238,7 @@ def game():
     else:
         clear()
         score = points + 10
+        update_scoreboard()
         print(Fore.BLUE
               + Style.BRIGHT + (f" Well done {name}, you won!").center(width))
         print(
@@ -287,6 +284,7 @@ def end_game():
                 leader_board()
                 break
             else:
+                clear()
                 raise ValueError('\nYou must type Y,N or S!!!'.center(width))
         except ValueError as e_rr:
             print(Fore.RED + (f'Try again: {e_rr}'))
@@ -315,7 +313,7 @@ def leader_board():
     """
     clear()
     leaders.sort((2, 'des'))
-    data = leaders.get("A2:C7")
+    data = leaders.get("A2:C10")
     # print(data)
     print(tabulate(data, headers=['name', 'score', 'date']))
     while True:
@@ -332,10 +330,10 @@ def leader_board():
                 end_game()
                 break
             else:
+                clear()
                 raise ValueError('\nYou must type B!!!'.center(width))
         except ValueError as e_rr:
             print(Fore.RED + (f'Try again: {e_rr}'))
-    clear()
 
 
 if __name__ == '__main__':
