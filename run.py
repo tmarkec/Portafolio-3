@@ -17,7 +17,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
- 
+
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -80,14 +80,18 @@ def rules():
     welcome_text = pyfiglet.figlet_format('**Hangman**')
     print(welcome_text)
     print("\n")
-    print("Rules of this game are fairly simple!!!\n".center(width))
+    print(Fore.LIGHTWHITE_EX + "Rules of this game are fairly"
+                               " simple!!!\n".center(width))
     print("1. You are guessing letters one by one that makes"
-          "hidden word.".center(width))
-    print("2. With each wrong guess you are losing a life".center(width))
-    print("3. How many lives you have depends on the level you chose".center(
+          " hidden word.".center(width))
+    print("2. With each wrong guess you are"
+          " losing a life and 1 point from score".center(width))
+    print("3. With each right guess you are"
+          " getting closer to win and 1 point from score".center(width))
+    print("4. How many lives you have depends on the level you chose".center(
         width))
-    print("4. You win the game by guessing all the letter in word".center(
-        width))
+    print("5. You win by guessing all the letters in the"
+          " word and getting extra 10 points".center(width))
     print(Fore.LIGHTYELLOW_EX + "HARD =3 tries, MEDIUM ="
                                 "5 tries, EASY =7 tries\n".center(width))
     while True:
@@ -116,8 +120,8 @@ def check_rules():
     print('\n')
     print(f"{Fore.BLUE + Style.BRIGHT} What a lovely name {name}!\n".center(
         width))
-    print("If you wish to read rules press R!!".center(width))
-    print("If you wish to continue press C!!\n".center(width))
+    print("If you wish to read rules press R,to continue press C!!".center(
+        width))
     while True:
         try:
             check = input('Press (R)ules or (C)ontinue'.center(
@@ -164,7 +168,7 @@ def levels():
             else:
                 clear()
                 raise ValueError(
-                    Fore.RED + ('Please follow simple instuctions!!!'))
+                    Fore.RED + ('Please type E, M or H!!!'))
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
     clear()
@@ -189,6 +193,7 @@ def game():
     score = 0
 
     while len(hidden_word) > 0 and tries > 0:
+        print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         letter_words = \
             [letter if letter in used_letters else '-' for letter in word]
         print(hangman_as[tries])
@@ -208,21 +213,21 @@ def game():
             if user_guess in hidden_word:
                 hidden_word.remove(user_guess)
                 points += 1
-                print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
+                # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
             else:
                 tries -= 1
                 points -= 1
                 print(Fore.RED + 'Your guess is not in the word,'
                                  'try again!'.center(width))
-                print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
+                # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         elif user_guess in used_letters:
             print(Fore.YELLOW + 'You used this letter already,'
                                 'try again'.center(width))
-            print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
+            # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         else:
             print(Fore.RED + 'Unrecognized character'
                              ' try again with letter!'.center(width))
-            print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
+            # print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
     if tries == 0:
         clear()
         print(Fore.RED + (f'Sorry {name} you lost!!!\n').center(width))
@@ -263,8 +268,8 @@ def end_game():
     Function that will ask user if he wants to play again.
     """
     while True:
-        print(f"{Fore.GREEN + Style.BRIGHT} {name} you can play"
-              " again or not or you can just check our scoreboard\n".center(
+        print(f"{Fore.GREEN + Style.BRIGHT} {name} you can deicide to play"
+              " again or not, or you can just check our scoreboard\n".center(
                 width))
         again = input('Press (Y)es, (N)o or (S)core\n'.center(width)).upper()
         try:
@@ -317,7 +322,8 @@ def leader_board():
         print("\n")
         print(Fore.GREEN
               + Style.BRIGHT
-              + "Hope you are happy with your score, now lets get you back!")
+              + "Hope you are happy with your score,"
+                " now lets get you back!".center(width))
         print("\n")
         back = input("Press (B)ack!!".center(width)).upper()
         try:
