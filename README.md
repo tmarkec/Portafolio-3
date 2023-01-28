@@ -70,24 +70,78 @@ Hangman is a Python terminal game. The player's objective is to guess letters in
 
 ## Flow Chart
 
+<details><summary>Screenshots</summary>
+<img src="./readme-img/input-name.png">
+</details>
+
 The planning of this project was based on the flow charts using the platform Lucid Char
 
 ## Features
 ### Welcome screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/start_screen.png">
+</details>
+
 - Welcomes a user to the game with the name input field
+
 ### Second screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/2nd_screen.png">
+</details>
+
 - Welcome a user with their name and give a user option to either read the rules or continue to the next step
+
 ### Rules screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/rules_screen.png">
+</details>
+
 - Describes rules to the user and how to play the game
+
 ### Levels screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/levels.png">
+</details>
+
 - Gives a user option to pick the difficulty level that will reflect on the tries he gets through the game
+
 ### Game screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/game_screen.png">
+</details>
+
 - This is also a play screen on which a user is guessing letters from the hidden word. A user is displayed with multiple sections: current score, already tried letters, hidden word, hangman art in different stages depends on a user progress and with remaining lives/tries that a user has for this game
+
 ### End game screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/end_win.png">
+</details>
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/lose_screen.png">
+</details>
+
 - A user is displayed with the completed hangman art(win or lose), his overall score and the option to play the game again, check scores, or exit the game
+
 ### Score screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/leader_board.png">
+</details>
+
 - A user is presented with a table that has 3 columns with name, score and current date that the game has been played, and scores are presented from best to worst
+
 ### Thank you screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/thank_you.png">
+</details>
+
 - A user is presented with ascci art thank you message
 
 ## Testing
@@ -198,27 +252,76 @@ The planning of this project was based on the flow charts using the platform Luc
 | Game worked locally but not on Heroku app                   |  Created new excell sheet with new credentials and repeated process of connecting APIs, googleshet, heroku                           |
                                                                                                          
  ### Manual Testing
-  - Welcome screen
-    - I've tested that the input field for name takes only alphabet letters and nothing else and that error message is displayed to the user that warns the user of his input
-  - Decide to check the rules screen 
-    - I've tested that the user is allowed to enter only letters that are displayed on the screen and that the error message is shown to the user and that those options lead the user to the screen that he chose to go to
-  - Rules screen
-    - I've tested that user can only input the letter "P" which will take a user to the next screen, the wrong input is displayed to the user
-  - Level difficulty screen
-    - I've tested that the user can only input 3 letters/ options that are provided to him and if he inputs the wrong letter that error message is displayed to the user
-  - Game screen
-    - I've tested multiple inputs on this screen
-    - If a user repeats the letter that he already guessed error message will be displayed to the user
-    - If a user inputs the number or any other special character error message will be displayed to the user
-    - If a user inputs is wrong error message will notify the user 
-  - End game screen
-    - I've tested that the user is only allowed to input letters that are instructed on the screen and that with wrong input error message displays to user 
-  - Score screen
-    - I've tested that user is only allowed to press letter "B" to go back to previous screen and that error message is displayed to the user if he puts wrong input
-  - Hangman game
-    - I've tested that all instructions are displayed to the user and that all inputs that the user has to type will bring user to desired and expected outcome like it's displayed on the screens across the game
-    - I've tested that score on the game page is with the rules of the game and that the overall score is uploaded to the google sheet and that data is printed out on the final screen if a user wishes to check the leaderboard
-    - Also tested that data is presented to the user from top (best score) to the bottom
+  #### Welcome screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/input_name_invalid.png">
+</details>
+
+  - I've tested that the input field for name takes only alphabet letters and nothing else and that error message is displayed to the user that warns the user of his input
+
+ #### Decide to check the rules screen 
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/2nd_ivalid.png">
+</details>
+
+   - I've tested that the user is allowed to enter only letters that are displayed on the screen and that the error message is shown to the user and that those options lead the user to the screen that he chose to go to
+
+ #### Rules screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/rules_invalid.png">
+</details>
+
+  - I've tested that user can only input the letter "P" which will take a user to the next screen, the wrong input is displayed to the user
+
+ #### Level difficulty screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/leader_invalid.png">
+</details>
+
+   - I've tested that the user can only input 3 letters/ options that are provided to him and if he inputs the wrong letter that error message is displayed to the user
+
+ #### Game screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/game_invalid_character.png">
+</details>
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/game_same_let.png">
+</details>
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/wrondg_guess.png">
+</details>
+
+  - I've tested multiple inputs on this screen
+  - If a user repeats the letter that he already guessed error message will be displayed to the user
+  - If a user inputs the number or any other special character error message will be displayed to the user
+  - If a user inputs is wrong error message will notify the user 
+
+#### End game screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/end_invalid.png">
+</details>
+
+  - I've tested that the user is only allowed to input letters that are instructed on the screen and that with wrong input error message displays to user 
+
+ #### Score screen
+
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/leader_invalid.png">
+</details>
+
+   - I've tested that user is only allowed to press letter "B" to go back to previous screen and that error message is displayed to the user if he puts wrong input
+
+ #### Hangman game
+
+  - I've tested that all instructions are displayed to the user and that all inputs that the user has to type will bring user to desired and expected outcome like it's displayed on the screens across the game
+   - I've tested that score on the game page is with the rules of the game and that the overall score is uploaded to the google sheet and that data is printed out on the final screen if a user wishes to check the leaderboard
+  - Also tested that data is presented to the user from top (best score) to the bottom
 
 ## Future Features
    - Features that I would like to add to the game would be, different categories that users can pick to guess the secret word

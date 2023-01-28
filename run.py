@@ -232,6 +232,7 @@ def game():
         print(hangman_as[tries])
         print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
             width))
+        print("\n")
         update_scoreboard()
         end_game()
 
@@ -265,8 +266,8 @@ def end_game():
     Function that will ask user if he wants to play again.
     """
     while True:
-        print(f"{Fore.GREEN + Style.BRIGHT} {name} you can deicide to play"
-              " again or not, or you can check scoreboard\n".center(
+        print(f"{Fore.GREEN + Style.BRIGHT} {name} you can play again, check"
+               " leaderboard or exit game.\n".center(
                 width))
         again = input('Press (Y)es, (N)o or (S)core:\n'.center(width)).upper()
         try:
