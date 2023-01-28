@@ -155,7 +155,7 @@ The planning of this project was based on the flow charts using the platform Luc
 | Welcome screen | There is a user name input field below the "Hangman" title | Type your username and press enter, your name will appear in later stages of the game | It works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/input-name.png">
+<img src="assets/readme_img/user1.png">
 </details>
 
 -  As a player, I want to be able to know the rules of the game
@@ -165,7 +165,7 @@ The planning of this project was based on the flow charts using the platform Luc
 | Hangman rules screen | On the second screen type "R" and press "Enter" that will lead you to a separate screen which will display the rules of the game | Game rules are shown on the separate clear screen | It works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/alert-window.png">
+<img src="assets/readme_img/user2.png">
 </details>
 
  - As a player, I want the be able to pick the level of difficulty for the game
@@ -175,10 +175,7 @@ The planning of this project was based on the flow charts using the platform Luc
 | Choose level screen | After reading the rules or just skipping them, you come to a screen with 3 difficulty options (E, M, H) | By using the keyboard, the difficulty level will be set for the game | It works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/check-input.png">
-</details>
-<details><summary>Screenshots</summary>
-<img src="./readme-img/input-field-nmb.png">
+<img src="assets/readme_img/levels.png">
 </details>
 
 -  As a player, I want the game to show my progress in the game either by winning or loosing.
@@ -188,7 +185,7 @@ The planning of this project was based on the flow charts using the platform Luc
 | Game screen  | Start guessing random letters by inputting on the keyboard and pressing enter | Hangman art is displayed depending on the progress and levels, a message with remaining lives is shown as a secret word with right-guessed letters shown | It works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/1-25.png">
+<img src="assets/readme_img/user4.png">
 </details>
 
 -  As a player, I want a warning message to appear on the screen if I accidentally enter an invalid character, number or just repeat the letter I used already
@@ -198,10 +195,7 @@ The planning of this project was based on the flow charts using the platform Luc
 | Game screen | Type either a special character, number or repeat letter you already guessed | Message to apear on top of the screen, to warn user about invalid input and not to count as try in the game | It works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/try-higher-nmb.png">
-</details>
-<details><summary>Screenshots</summary>
-<img src="./readme-img/try-lower-nmb.png">
+<img src="assets/readme_img/user4.png">
 </details>
 
 -  As a player, I want to get some message if I win, and if I lose, I want to know what was the secret word
@@ -211,15 +205,18 @@ The planning of this project was based on the flow charts using the platform Luc
 | Game screen  | By either winning or losing the game new screen will display | Message on the top of the screen that will tell me If I won the game and a message with the completed art of hangman with a secret word will appear on the screen | It works as expected |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/already-tried.png">
+<img src="assets/readme_img/user6.png">
 </details>
 
 -  As a player, after every game I want to be able to have option to play again or not
 
 | **Feature** | **Action**                                     | **Expected Result**                                                                | **Actual Result** |
 | ----------- | ---------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------- |
-| End game screen  | After finishing the game message with options for the user will appear on the screen | By pressing "Y" to be directed to choose the level for another game, or by pressing "N" to be displayed thank you message | It works as expected |
+| End game screen  | After finishing the game message with options for the user will appear on the screen | By pressing "Y" to be directed to choose the level for another game | It works as expected |
 
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/user7.png">
+</details>
 
 -  As a player, I want to be able to see my score/progress through the game and to have option to check other people scores
 
@@ -228,15 +225,18 @@ The planning of this project was based on the flow charts using the platform Luc
 | Game page & Score page  | Play the game | User score is displayed on top of the screen, and once user finish his game he can simply check leaderboard | It work as expected  |
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/back.png">
+<img src="assets/readme_img/user4.png">
+</details>
+<details><summary>Screenshots</summary>
+<img src="assets/readme_img/leader_board.png">
 </details>
 
  ### Validation Testing
 - Used PEP8 Python Validator to validate my code
 
-- <details><summary>Validated code</summary>
-      <img src="assets/readme_img/validation_code.png">
-      </details>
+<details><summary>Validated code</summary>
+<img src="assets/readme_img/validation_code.png">
+</details>
 
  ### Bugs
 | **Bug**                                                                                                         | **Fix**                                                                                                                                                       |
@@ -332,7 +332,9 @@ The planning of this project was based on the flow charts using the platform Luc
 ### Gitpod and git
  -  I created a repository in Github, named it Portafolio-3, and used the template Code-Institute-org/python-essentials-template
  -  Once the repository is created, click the green button to the right (Gitpod) to open Gitpod
- -  In the terminal, I've used the run.py file provided by the template
+ -  In the terminal, I've used the python3 run.py file provided by the template
+ - At regular appropriate intervals the latest version of the code was saved via the git add and git commit commands. Appropriate commit messages were added to control the revisions.
+- The git push command was used to push all committed code and documentation to the repository for secure storage.
  
 
 ### Heroku
@@ -341,7 +343,8 @@ This project was deployed using Code Institutes mock terminal for Heroku.
 -  Log in to Heroku and click "New" and "Create new app"
 -  Name the new app and click "Create new app".
 -  In "Settings" select "BuildPack" and select Python and Node.js. (Python must be at the top of the list).
--  While still in "Settings", click "Reveal Config Vars" and add the following; KEY: PORT, VALUE: 8000.
+-  While still in "Settings", click "Reveal Config Vars" and add the following; KEY: PORT, VALUE: 8000. and
+content from creds.json file
 -  Click on "Deploy" and select your deploy method and search for the repository name.
 -  Click "Connect" on a selected repository.
 -  Either choose "Enable Automatic Deploys" or "Deploy Branch" in the manual deploy section.
