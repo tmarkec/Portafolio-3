@@ -9,6 +9,14 @@ init(autoreset=True)
 width = os.get_terminal_size().columns
 
 
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+    
 def welcome_screen():
     """
     Function to welcome screen which will provide user

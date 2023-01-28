@@ -214,18 +214,24 @@ def game():
                 points -= 1
                 print(Fore.RED + 'Your guess is not in the word,'
                                  'try again!'.center(width))
+                print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         elif user_guess in used_letters:
             print(Fore.YELLOW + 'You used this letter already,'
                                 'try again'.center(width))
+            print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
         else:
             print(Fore.RED + 'Unrecognized character'
                              ' try again with letter!'.center(width))
+            print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
     if tries == 0:
         clear()
         print(Fore.RED + (f'Sorry {name} you lost!!!\n').center(width))
         print('The word we were looking for was:'.center(width))
         print(f"{Fore.YELLOW + Style.BRIGHT} {word}".center(width))
         print(hangman_as[tries])
+        print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
+            width))
+        update_scoreboard()
         end_game()
 
     else:
