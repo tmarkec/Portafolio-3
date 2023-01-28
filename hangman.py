@@ -1,3 +1,6 @@
+"""
+Hangman art for the game
+"""
 hangman_as = {
     0:
         """

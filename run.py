@@ -1,3 +1,7 @@
+"""
+Used for libraries and imports
+"""
+
 import random
 import string
 import os
@@ -18,12 +22,12 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('score')
+SHEET = GSPREAD_CLIENT.open("score")
 
-leaders = SHEET.worksheet('leaderboard')
+leaders = SHEET.worksheet("leaderboard")
 date = datetime.datetime.now().strftime("%d-%m-%Y")
 
 
@@ -32,11 +36,11 @@ def welcome_screen():
     Function to welcome screen which will provide user
     with rules and input field for his name.
     """
-    welcome_text = pyfiglet.figlet_format('** Hangman **')
+    welcome_text = pyfiglet.figlet_format("** Hangman **")
     print(welcome_text)
     global name
     while True:
-        print('\n')
+        print("\n")
         print("\n")
         name = (
             input(
@@ -60,7 +64,7 @@ def clear():
     """
     Function to clear terminal through the game.
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def get_word():
@@ -77,7 +81,7 @@ def rules():
     This function will display rules to the user
     """
     clear()
-    welcome_text = pyfiglet.figlet_format('**Hangman**')
+    welcome_text = pyfiglet.figlet_format("**Hangman**")
     print(welcome_text)
     print("\n")
     print(Fore.LIGHTWHITE_EX + "Rules of this game are fairly"
@@ -115,27 +119,27 @@ def check_rules():
     This function will check if user wish to read rules or continue with game!
     """
     clear()
-    welcome_text = pyfiglet.figlet_format('**Hangman**')
+    welcome_text = pyfiglet.figlet_format("**Hangman**")
     print(welcome_text)
-    print('\n')
+    print("\n")
     print(f"{Fore.BLUE + Style.BRIGHT} What a lovely name {name}!\n".center(
         width))
     print("If you wish to read rules press R,to continue press C!!".center(
         width))
     while True:
         try:
-            check = input('Press (R)ules or (C)ontinue:\n'.center(
+            check = input("Press (R)ules or (C)ontinue:\n".center(
                     width)).upper()
-            if check == 'R':
+            if check == "R":
                 rules()
                 break
-            elif check == 'C':
+            elif check == "C":
                 levels()
                 break
             else:
                 clear()
                 raise ValueError(
-                    Fore.RED + ('Please choose letters R or C!'))
+                    Fore.RED + ("Please choose letters R or C!"))
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
     clear()
@@ -148,27 +152,27 @@ def levels():
     """
     global lives
     clear()
-    print(f'{name}, now choose your level!'.center(width))
-    print('\n')
+    print(f"{name}, now choose your level!".center(width))
+    print("\n")
     while True:
         try:
-            print(Fore.GREEN + 'Please type E for easy\n'.center(width))
-            print(Fore.CYAN + 'Please type M for medium\n'.center(width))
-            print(Fore.YELLOW + 'Please type H for hard\n'.center(width))
+            print(Fore.GREEN + "Please type E for easy\n".center(width))
+            print(Fore.CYAN + "Please type M for medium\n".center(width))
+            print(Fore.YELLOW + "Please type H for hard\n".center(width))
             difficulty = input(''.center(width)).strip().upper()
-            if difficulty == 'E':
+            if difficulty == "E":
                 lives = 7
                 break
-            elif difficulty == 'M':
+            elif difficulty == "M":
                 lives = 5
                 break
-            elif difficulty == 'H':
+            elif difficulty == "H":
                 lives = 3
                 break
             else:
                 clear()
                 raise ValueError(
-                    Fore.RED + ('Please type E, M or H!!!'))
+                    Fore.RED + ("Please type E, M or H!!!"))
         except ValueError as e_rr:
             print(f"Invalid input:{e_rr}")
     clear()
@@ -193,9 +197,9 @@ def game():
     score = 0
 
     while len(hidden_word) > 0 and tries > 0:
-        print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
+        print(f"{Fore.WHITE + Style.BRIGHT}Your score: {points}")
         letter_words = \
-            [letter if letter in used_letters else '-' for letter in word]
+            [letter if letter in used_letters else "-" for letter in word]
         print(hangman_as[tries])
         print(' '.join(letter_words).center(width))
         print(
@@ -216,18 +220,18 @@ def game():
             else:
                 tries -= 1
                 points -= 1
-                print(Fore.RED + 'Your guess is not in the word,'
-                                 'try again!'.center(width))
+                print(Fore.RED + "Your guess is not in the word,"
+                                 "try again!".center(width))
         elif user_guess in used_letters:
-            print(Fore.YELLOW + 'You used this letter already,'
-                                'try again'.center(width))
+            print(Fore.YELLOW + "You used this letter already,"
+                                "try again".center(width))
         else:
-            print(Fore.RED + 'Unrecognized character'
-                             ' try again with letter!'.center(width))
+            print(Fore.RED + "Unrecognized character"
+                             " try again with letter!".center(width))
     if tries == 0:
         clear()
-        print(Fore.RED + (f'Sorry {name} you lost!!!\n').center(width))
-        print('The word we were looking for was:'.center(width))
+        print(Fore.RED + (f"Sorry {name} you lost!!!\n").center(width))
+        print("The word we were looking for was:".center(width))
         print(f"{Fore.YELLOW + Style.BRIGHT} {word}".center(width))
         print(hangman_as[tries])
         print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
@@ -244,7 +248,7 @@ def game():
               + Style.BRIGHT + (f" Well done {name}, you won!").center(width))
         print(
             """
-                                   .-''.
+                                   .-"'.
                                   /    \\
                              ')  || '/' | (`
                               \\  \\`_.' //
@@ -270,9 +274,9 @@ def end_game():
         print(f"{Fore.GREEN + Style.BRIGHT} {name} you can play again, check"
               " leaderboard or exit game.\n".center(
                 width))
-        again = input('Press (Y)es, (N)o or (S)core:\n'.center(width)).upper()
+        again = input("Press (Y)es, (N)o or (S)core:\n".center(width)).upper()
         try:
-            if again == 'Y':
+            if again == "Y":
                 clear()
                 levels()
                 game()
@@ -287,9 +291,9 @@ def end_game():
                 break
             else:
                 clear()
-                raise ValueError('\nYou must type Y,N or S!!!'.center(width))
+                raise ValueError("\nYou must type Y,N or S!!!".center(width))
         except ValueError as e_rr:
-            print(Fore.RED + (f'Try again: {e_rr}'))
+            print(Fore.RED + (f"Try again: {e_rr}"))
 
 
 def thank_you():
@@ -297,7 +301,7 @@ def thank_you():
     This function will just print text for user
     when he decided to stop playing game
     """
-    thank_text = pyfiglet.figlet_format(f'Thank you for playing game {name}!')
+    thank_text = pyfiglet.figlet_format(f"Thank you for playing game {name}!")
     print(thank_text)
 
 
@@ -314,10 +318,10 @@ def leader_board():
     Function to display scores on user request
     """
     clear()
-    leaders.sort((2, 'des'))
+    leaders.sort((2, "des"))
     data = leaders.get("A2:C10")
     # print(data)
-    print(tabulate(data, headers=['name', 'score', 'date']))
+    print(tabulate(data, headers=["name", "score", "date"]))
     while True:
         print("\n")
         print(Fore.GREEN
