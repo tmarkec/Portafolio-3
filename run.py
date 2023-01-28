@@ -230,13 +230,12 @@ def game():
                              " try again with letter!".center(width))
     if tries == 0:
         clear()
-        print(Fore.RED + (f"Sorry {name} you lost!!!\n").center(width))
+        print(Fore.RED + (f"Sorry {name} you lost!!!").center(width))
         print("The word we were looking for was:".center(width))
         print(f"{Fore.YELLOW + Style.BRIGHT} {word}".center(width))
         print(hangman_as[tries])
         print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
             width))
-        print("\n")
         update_scoreboard()
         end_game()
 
