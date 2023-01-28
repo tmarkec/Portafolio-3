@@ -179,11 +179,14 @@ def game():
     loose all lives.
     """
     clear()
+    global score
     word = get_word()
     hidden_word = set(word)
     letter_alphab = set(string.ascii_uppercase)
     used_letters = set()
     tries = lives
+    points = 0
+    score = 0
 
     while len(hidden_word) > 0 and tries > 0:
         letter_words = \
@@ -204,8 +207,11 @@ def game():
             used_letters.add(user_guess)
             if user_guess in hidden_word:
                 hidden_word.remove(user_guess)
+                points += 1
+                print(f'{Fore.WHITE + Style.BRIGHT}Your score: {points}')
             else:
                 tries -= 1
+                points -= 1
                 print(Fore.RED + 'Your guess is not in the word,'
                                  'try again!'.center(width))
         elif user_guess in used_letters:
@@ -260,6 +266,42 @@ def thank_you():
     """
     thank_text = pyfiglet.figlet_format(f'Thank you for playing game {name}!')
     print(thank_text)
+
+
+def update_scoreboard():
+    """
+    Function to update data on google sheets
+    """
+    update = [name, score, date]
+    leaders.insert_row(update, 3)
+
+
+def leader_board():
+    """
+    Function to display scores
+    """
+    clear()
+    leaders.sort((2, 'des'))
+    data = leaders.get("A2:C7")
+    # print(data)
+    print(tabulate(data, headers=['name', 'score', 'date']))
+    while True:
+        print("\n")
+        print(Fore.GREEN
+              + Style.BRIGHT
+              + "Hope you are happy with your score, now lets get you back!")
+        print("\n")
+        back = input("Press (B)ack!!".center(width)).upper()
+        try:
+            if back == 'B':
+                clear()
+                end_game()
+                break
+            else:
+                raise ValueError('\nYou must type B!!!'.center(width))
+        except ValueError as e_rr:
+            print(Fore.RED + (f'Try again: {e_rr}'))
+    clear()
 
 
 if __name__ == '__main__':
