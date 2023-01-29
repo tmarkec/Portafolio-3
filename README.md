@@ -19,7 +19,7 @@ Hangman is a Python terminal game. The player's objective is to guess letters in
         * [Testing User Stories](#testing-user-stories)
         * [Validation Testing](#validation-testing)
         * [Bugs](#bugs)
-        * [Other Testing](#other-testing)
+        * [Manual Testing](#manual-testing)
     * [Future Features](#future-features)
     * [Deployment](#deployment)
     * [Credits](#credits)
