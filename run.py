@@ -182,7 +182,7 @@ def levels():
 def game():
     """
     This function will run the game, sets lives and
-    template for player to play depends on the level he choose.
+    template for the player to play depends on the level he choose.
     The game will finish when user either guess the word or
     loose all lives.
     """
@@ -231,8 +231,8 @@ def game():
     if tries == 0:
         clear()
         print(Fore.RED + (f"Sorry {name} you lost!!!").center(width))
-        print(f"The word we were looking for was:\
-        {Fore.YELLOW + Style.BRIGHT} {word}".center(width))
+        print(f"The word we were looking for was:{Fore.YELLOW} {word}".center(
+            width))
         print(hangman_as[tries])
         print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
             width))
@@ -318,7 +318,9 @@ def leader_board():
     clear()
     leaders.sort((2, "des"))
     data = leaders.get("A2:C10")
-    # print(data)
+    print(Fore.BLUE
+          + Style.BRIGHT
+          + "Top 10 scores\n")
     print(tabulate(data, headers=["name", "score", "date"]))
     while True:
         print("\n")
