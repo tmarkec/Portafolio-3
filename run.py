@@ -86,12 +86,12 @@ def rules():
     print("\n")
     print(Fore.LIGHTWHITE_EX + "Rules of this game are fairly"
                                " simple!!!\n".center(width))
-    print("1. You are guessing letters one by one that makes"
-          " hidden word.".center(width))
-    print("2. With each wrong guess you are"
-          " losing a life and 1 point from score".center(width))
-    print("3. With each right guess you are"
-          " getting closer to win and 1 point from score".center(width))
+    print("1.You are guessing letters one by one that makes"
+          " hidden word".center(width))
+    print("2.Each wrong guess you are losing a"
+          "  life and 1 point is deducted from score".center(width))
+    print("3.Each right guess you are getting closer"
+          " to the win and 1 point is add to the score".center(width))
     print("4. How many lives you have depends on the level you chose".center(
         width))
     print("5. You win by guessing all the letters in the"
@@ -231,8 +231,8 @@ def game():
     if tries == 0:
         clear()
         print(Fore.RED + (f"Sorry {name} you lost!!!").center(width))
-        print("The word we were looking for was:".center(width))
-        print(f"{Fore.YELLOW + Style.BRIGHT} {word}".center(width))
+        print(f"The word we were looking for was:\
+        {Fore.YELLOW + Style.BRIGHT} {word}".center(width))
         print(hangman_as[tries])
         print(f"{Fore.WHITE + Style.BRIGHT}Your score was: {score}".center(
             width))

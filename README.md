@@ -71,7 +71,7 @@ Hangman is a Python terminal game. The player's objective is to guess letters in
 ## Flow Chart
 
 <details><summary>Screenshots</summary>
-<img src="./readme-img/input-name.png">
+<img src="assets/readme_img/hangman.jpeg">
 </details>
 
 The planning of this project was based on the flow charts using the platform Lucid Char
