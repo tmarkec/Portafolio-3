@@ -362,7 +362,7 @@ content from creds.json file
   - Credits for centering my content in the terminal with the code  os.get_terminal_size().columns goes to [Geeksforgeeks](https://www.geeksforgeeks.org/)
 
 - Acknowledgment
-  - Special thank you goes to mentor Jubril Akolade who helped me to finish my project
+  - Special thank you goes to mentors Narander and Jubril who helped me to finish my project
   - I would like to thank tutor support from Code Institue for their help, as well as the whole  Code Institue for giving me the opportunity to attend this course and to work on this project
   - I would also like to thank my colleagues for their support
   - Last but not least I would like to thank our coordinator Irene from Code Institute for giving guidance and schedules on daily basis in the classroom
